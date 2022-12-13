@@ -24,7 +24,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:maxHeight="40dp"
         android:textColor="#6E6E6E"
         app:layout_constraintBottom_toBottomOf="@+id/tv_name"
         app:layout_constraintEnd_toEndOf="parent"
