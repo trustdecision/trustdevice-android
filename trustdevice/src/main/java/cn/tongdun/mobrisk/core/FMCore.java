@@ -104,7 +104,7 @@ public class FMCore {
 
     private void collectorBuildInfo() {
         BuildInfoCollector buildInfoCollector = new BuildInfoCollector();
-        mDeviceInfo.setModel(buildInfoCollector.getMode());
+        mDeviceInfo.setModel(buildInfoCollector.getModel());
         mDeviceInfo.setManufacturer(buildInfoCollector.getManufacturer());
         mDeviceInfo.setAndroidVersion(buildInfoCollector.getAndroidVersion());
         mDeviceInfo.setSdkVersion(buildInfoCollector.getSdkVersion());

@@ -24,6 +24,12 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    - name: Lint
+      run: ./gradlew trustdevice:lint
+
+    - name: Test
+      run: ./gradlew trustdevice:test
       
     - name: Build library
       run: ./gradlew trustdevice:assembleRelease
