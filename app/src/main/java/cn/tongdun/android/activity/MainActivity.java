@@ -8,10 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.trustdevice.android.R;
-import cn.tongdun.android.adapter.DeviceModuleItemAdapter;
-import cn.tongdun.android.base.BaseActivity;
-import cn.tongdun.android.beans.DetailsItemBean;
-import cn.tongdun.android.beans.DeviceModuleItemBean;
 
 import org.json.JSONObject;
 
@@ -19,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.tongdun.android.adapter.DeviceModuleItemAdapter;
+import cn.tongdun.android.base.BaseActivity;
+import cn.tongdun.android.beans.DetailsItemBean;
+import cn.tongdun.android.beans.DeviceModuleItemBean;
 import cn.tongdun.mobrisk.TDRisk;
 import cn.tongdun.mobrisk.TDRiskCallback;
 import cn.tongdun.mobrisk.providers.InfoProvider;
@@ -30,8 +30,8 @@ import cn.tongdun.mobrisk.providers.device_id.DeviceIdProvider;
 import cn.tongdun.mobrisk.providers.memory.MemoryInfoProvider;
 import cn.tongdun.mobrisk.providers.risk.RiskInfoProvider;
 import cn.tongdun.mobrisk.providers.screen.ScreenInfoProvider;
-import cn.tongdun.mobrisk.providers.setting.SettingInfoProvider;
 import cn.tongdun.mobrisk.providers.sensor.SensorInfoProvider;
+import cn.tongdun.mobrisk.providers.setting.SettingInfoProvider;
 
 public class MainActivity extends BaseActivity {
 
@@ -48,6 +48,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         createDeviceInfo();
+//        TDRisk.Builder builder = new TDRisk.Builder();
+//        builder.callback(new TDRiskCallback() {
+//            @Override
+//            public void onEvent(JSONObject deviceInfo) {
+//                String deviceID = deviceInfo.optString("device_id");
+//                JSONObject deviceRisk = deviceInfo.optJSONObject("device_risk_label");
+//                JSONObject deviceDetail = deviceInfo.optJSONObject("device_detail");
+//            }
+//        });
+//        TDRisk.initWithOptions(this, builder);
     }
 
     @Override
@@ -57,16 +67,6 @@ public class MainActivity extends BaseActivity {
         rvDeviceInfoContainer.setLayoutManager(manager);
         mAdapter = new DeviceModuleItemAdapter(mItemData);
         rvDeviceInfoContainer.setAdapter(mAdapter);
-        TDRisk.Builder builder = new TDRisk.Builder();
-        builder.callback(new TDRiskCallback() {
-            @Override
-            public void onEvent(JSONObject deviceInfo) {
-                String deviceID = deviceInfo.optString("device_id");
-                JSONObject deviceRisk = deviceInfo.optJSONObject("device_risk_label");
-                JSONObject deviceDetail = deviceInfo.optJSONObject("device_detail");
-            }
-        });
-        TDRisk.initWithOptions(this, builder);
     }
 
     private void createDeviceInfo() {

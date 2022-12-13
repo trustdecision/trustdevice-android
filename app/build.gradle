@@ -11,17 +11,17 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         release {
-            storeFile file("trustdevice_demo.jks")
-            storePassword System.getenv('TRUSTDEVICE')
-            keyAlias System.getenv('TRUSTDEVICE_KEY_ALIAS')
-            keyPassword System.getenv('TRUSTDEVICE')
+            storeFile file("demo_release.jks")
+            storePassword 'TRUSTDEVICE'
+            keyAlias 'TRUSTDEVICE_KEY_ALIAS'
+            keyPassword 'TRUSTDEVICE'
         }
     }
 
