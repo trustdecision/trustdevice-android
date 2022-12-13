@@ -3,6 +3,8 @@ name: Android CI
 on:
   push:
     branches: [ "main" ]
+    tag:
+      - "v*"
   pull_request:
     branches: [ "main" ]
 
