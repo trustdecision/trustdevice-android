@@ -23,10 +23,16 @@ public class AppListProvider extends InfoProvider<String[]> {
     }
 
     private String getAppList() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_APP_LIST);
     }
 
     private String getSystemAppList() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SYSTEM_APP_LIST);
     }
 

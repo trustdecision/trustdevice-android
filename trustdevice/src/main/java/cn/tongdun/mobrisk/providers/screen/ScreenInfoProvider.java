@@ -22,14 +22,23 @@ public class ScreenInfoProvider extends InfoProvider<String> {
     }
 
     private String getScreenResolution() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SCREEN_RESOLUTION);
     }
 
     private String getScreenBrightness() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SCREEN_BRIGHTNESS);
     }
 
     private String getScreenOffTimeout() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SCREEN_OFF_TIMEOUT);
     }
 

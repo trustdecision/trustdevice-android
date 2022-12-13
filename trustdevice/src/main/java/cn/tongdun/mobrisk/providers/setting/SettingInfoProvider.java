@@ -23,34 +23,58 @@ public class SettingInfoProvider extends InfoProvider<String> {
     }
 
     private String getAdbEnable() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ADB_ENABLED);
     }
 
     private String getDevelopmentSettingEnabled() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_DEVELOPMENT_SETTING_ENABLED);
     }
 
     private String getHttpProxy() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_HTTP_PROXY);
     }
 
     private String getDataRoaming() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_DATA_ROAMING);
     }
 
     private String getAllowMockLocation() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ALLOW_MOCK_LOCATION);
     }
 
     private String getAccessibilityEnabled() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ACCESSIBILITY_ENABLED);
     }
 
     private String getDefaultInputMethod() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_DEFAULT_INPUTMETHOD);
     }
 
     private String getTouchExplorationEnabled() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_TOUCH_EXPLORATION_ENABLED);
     }
 

@@ -23,14 +23,23 @@ public class RiskInfoProvider extends InfoProvider<String> {
     }
 
     private String getRoot() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ROOT);
     }
 
     private String getDebug() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_DEBUG);
     }
 
     private String getMultiple() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_MULTIPLE);
     }
 

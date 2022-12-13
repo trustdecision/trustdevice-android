@@ -23,6 +23,9 @@ public class SensorInfoProvider extends InfoProvider<String> {
     }
 
     private String getSensorInfo() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SENSORS_INFO);
     }
 

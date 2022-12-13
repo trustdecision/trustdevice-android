@@ -34,22 +34,37 @@ public class BatteryInfoProvider extends InfoProvider<String> {
     }
 
     private String getHealth() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BATTERY_HEALTH_STATUS);
     }
 
     private String getStatus() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BATTERY_STATUS);
     }
 
     private String getLevel() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BATTERY_LEVEL);
     }
 
     private String getTemp() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BATTERY_TEMP);
     }
 
     private String getTotalCapacity() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BATTERY_TOTAL_CAPACITY);
     }
 }

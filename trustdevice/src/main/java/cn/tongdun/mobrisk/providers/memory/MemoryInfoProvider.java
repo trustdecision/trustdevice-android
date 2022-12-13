@@ -22,18 +22,30 @@ public class MemoryInfoProvider extends InfoProvider<String> {
     }
 
     private String getTotalMemory() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_TOTAL_MEMORY);
     }
 
     private String getAvailableMemory() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_AVAILABLE_MEMORY);
     }
 
     private String getTotalStorage() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_TOTAL_STORAGE);
     }
 
     private String getAvailableStorage() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_AVAILABLE_STORAGE);
     }
 

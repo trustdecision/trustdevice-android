@@ -23,34 +23,58 @@ public class BuildInfoProvider extends InfoProvider<String> {
     }
 
     private String getModel() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_MODEL);
     }
 
     private String getBrand() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_BRAND);
     }
 
     private String getManufacturer() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_MANUFACTURER);
     }
 
     private String getAndroidVersion() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ANDROID_VERSION);
     }
 
     public String getSdkVersion() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_SDK_VERSION);
     }
 
     private String getKernelVersion() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_KERNEL_VERSION);
     }
 
     private String getFingerprint() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_FINGERPRINT);
     }
 
     private String getHost() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_HOST);
     }
 

@@ -23,18 +23,30 @@ public class CpuInfoProvider extends InfoProvider<String> {
     }
 
     private String getCpuHardware() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_CPU_HARDWARE);
     }
 
     private String getCpuProcessor() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_CPU_PROCESSOR);
     }
 
     private String getAbiType() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_ABI_TYPE);
     }
 
     private String getCoresCount() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
         return mDeviceInfo.optString(Constants.KEY_CORES_COUNT);
     }
 
