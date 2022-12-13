@@ -1,0 +1,66 @@
+package cn.tongdun.mobrisk.providers.build;
+
+import android.util.Pair;
+
+import org.json.JSONObject;
+
+import java.util.List;
+
+import cn.tongdun.mobrisk.core.utils.Constants;
+import cn.tongdun.mobrisk.providers.InfoProvider;
+
+/**
+ * @description: BuildInfo Provider
+ * @author: wuzuchang
+ * @date: 2022/12/6
+ */
+@Deprecated(since = "pro no such class")
+public class BuildInfoProvider extends InfoProvider<String> {
+    private final JSONObject mDeviceInfo;
+
+    public BuildInfoProvider(JSONObject deviceInfo) {
+        mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_DETAIL);
+    }
+
+    private String getModel() {
+        return mDeviceInfo.optString(Constants.KEY_MODEL);
+    }
+
+    private String getBrand() {
+        return mDeviceInfo.optString(Constants.KEY_BRAND);
+    }
+
+    private String getManufacturer() {
+        return mDeviceInfo.optString(Constants.KEY_MANUFACTURER);
+    }
+
+    private String getAndroidVersion() {
+        return mDeviceInfo.optString(Constants.KEY_ANDROID_VERSION);
+    }
+
+    public String getSdkVersion() {
+        return mDeviceInfo.optString(Constants.KEY_SDK_VERSION);
+    }
+
+    private String getKernelVersion() {
+        return mDeviceInfo.optString(Constants.KEY_KERNEL_VERSION);
+    }
+
+    private String getFingerprint() {
+        return mDeviceInfo.optString(Constants.KEY_FINGERPRINT);
+    }
+
+    private String getHost() {
+        return mDeviceInfo.optString(Constants.KEY_HOST);
+    }
+
+    @Override
+    public String getProviderName() {
+        return "Build info ";
+    }
+
+    @Override
+    public List<Pair<String, String>> getRawData() {
+        return new BuildInfoRawData(getModel(), getBrand(), getManufacturer(), getAndroidVersion(), getSdkVersion(), getKernelVersion(), getFingerprint(), getHost()).loadData();
+    }
+}
