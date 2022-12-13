@@ -9,7 +9,7 @@ import android.os.Build;
  */
 public class BuildInfoCollector {
 
-    public String getMode() {
+    public String getModel() {
         try {
             return Build.MODEL;
         } catch (Exception ignored) {
