@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.tongdun.android.view.DeviceDetailsItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/module_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/item_card_background"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_module_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#8FC28C"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="module name" />
+
+    <TextView
+        android:id="@+id/tv_module_des"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#6E6E6E"
+        app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
+        app:layout_constraintStart_toStartOf="@+id/tv_module_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_module_name"
+        tools:text="xxxxxx" />
+
+    <ImageView
+        android:id="@+id/iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_down_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_module_des"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_module_name" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_module_des"
+        tools:visibility="visible" />
+</cn.tongdun.android.view.DeviceDetailsItemView>

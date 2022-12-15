@@ -1,0 +1,6 @@
+jdk:
+  - openjdk11
+install:
+   - ./gradlew clean
+   - ./gradlew trustdevice:assembleRelease
+   - ./gradlew trustdevice:publishMavenJavaPublicationToMavenLocal
