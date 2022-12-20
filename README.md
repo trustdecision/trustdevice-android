@@ -175,21 +175,55 @@ TDRisk.initWithOptions(context, builder);
 
 Full product comparison:
 
-|                               | Open Source | Pro              |
-| ----------------------------- | ----------- | ---------------- |
-| 100% open source              | yes         | no               |
-| Device ID                     | Basic       | Extremely stable |
-| Device Risk Label             | Basic       | Extremely rich   |
-| Device Details                | Basic       | Extremely rich   |
-| IP Location                   | -           | ✓                |
-| Device Risk Score             | -           | ✓                |
-| Environment Risk Evaluation   | -           | ✓                |
-| Fraud Tools Detection         | -           | ✓                |
-| Behavioral Activity Capturing | -           | ✓                |
+|                               | Open Source |       Pro        |
+| ----------------------------- | :---------: | :--------------: |
+| 100% open source              |     yes     |        no        |
+| Device ID                     |    Basic    | Extremely stable |
+| Device Risk Label             |    Basic    |  Extremely rich  |
+| Device Details                |    Basic    |  Extremely rich  |
+| IP Location                   |      -      |        ✓         |
+| Device Risk Score             |      -      |        ✓         |
+| Environment Risk Evaluation   |      -      |        ✓         |
+| Fraud Tools Detection         |      -      |        ✓         |
+| Behavioral Activity Capturing |      -      |        ✓         |
 
 ## Pro Introduction
 
-....
+TrustDecision TrustDevice has the leading device fingerprint technology, which has been integrated by more than 10000 global leading brands, protecting the entire customer journey.
+
+**There are 6 leading core features about TrustDevice Pro:**
+
+### 1. Wide Coverage
+
+Comprehensive coverage of Android, iOS, Web, H5, applets and other device types.
+
+### 2. Stable and Reliable
+
+TrustDevice served more than 10,000 clients, 200 million+ daily active users , and 6 billion+ devices , with excellent product functions and stability.
+The fingerprint accuracy of different terminal devices exceeded 99.9%, and the output of risk labels exceeded 70 items.
+
+### 3. Unparalleled Safety
+
+TrustDevice's code virtualization & obfuscation technology make the malware fraudsters suffer from painful cost and imprecision when performing reverse-engineering.
+
+### 4. Core Intellectual Property
+
+Fully independent intellectual property rights, with a number of patented technology.
+
+### 5. Security Compliance
+
+TrustDevice is committed to the highest standards in security and compliance to keep your data safe.
+GDPR/CCA/PCI DSS/ISO 27701/ISO 9001 Compliant.
+
+### 6. Easy to Deplo
+
+SaaS(Software as a Service)deployment supported, reducing massively your integration cost and enabling rapid access to device fingerprint service.
+
+## Where to get support
+
+We are happy to provide technical support for our open-source trustdevice-android library. We recommend using GitHub [Issues](https://github.com/trustdecision/trustdevice-android/issues) to submit bugs or [Discussions](https://github.com/trustdecision/trustdevice-android/discussions) to ask questions. Using issues and discussions publicly will help the open-source community and other users with similar issues.
+
+In addition, any idea or interest in using TrustDevice Pro can be found on the [www.trustdecision.com](https://www.trustdecision.com/trustDevice),  registered account for a free trial; or via email TrustDevice@TrustDecision.com contact us directly and quickly open the service.
 
 ## TrustDevice Android Demo App
 
@@ -200,4 +234,4 @@ Try the library features in the [TrustDevice Android Demo App](https://github.co
 trustdevice-android supports API versions from 21 (Android 5.0) and higher.
 
 ## License
-This library is MIT licensed. Copyright trustdecision, Inc. 2022.
+This library is MIT licensed. Copyright trustdecision, Inc. 2022.TrustDevice@TrustDecision.com 
