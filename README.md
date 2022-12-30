@@ -155,8 +155,7 @@ TDRisk.initWithOptions(context, builder);
         "timezone": "中国标准时间",
         "totalMemory": "5730922496",
         "totalStorage": "53684973568",
-        "touchExplorationEnabled": "0",
-        "vbMetaDigest": "4ab46ec3675c5251b815ce36de607abdab29cd827ed3bd99a24bd828597a712a"
+        "touchExplorationEnabled": "0"
     }
 }
 ```
@@ -173,7 +172,7 @@ TDRisk.initWithOptions(context, builder);
 | debug     | Applications can be modified by attackers at will, and the program will return unexpected values. |
 | multiple  | Attackers can clone multiple app.                            |
 
-Full product comparison:
+## Open Source VS Pro
 
 |                               | Open Source |       Pro        |
 | ----------------------------- |:-----------:|:----------------:|
@@ -221,9 +220,9 @@ SaaS(Software as a Service)deployment supported, reducing massively your integra
 
 ## Where to get support
 
-We are happy to provide technical support for our open-source trustdevice-android library. We recommend using GitHub [Issues](https://github.com/trustdecision/trustdevice-android/issues) to submit bugs or [Discussions](https://github.com/trustdecision/trustdevice-android/discussions) to ask questions. Using issues and discussions publicly will help the open-source community and other users with similar issues.
+We are happy to provide technical support for our open-source trustdevice-android library. We recommend using GitHub Issues to submit bugs or Discussions to ask questions. Using [Issues](https://github.com/trustdecision/trustdevice-android/issues) and [Discussions](https://github.com/trustdecision/trustdevice-android/discussions) publicly will help the open-source community and other users with similar issues.
 
-In addition, any idea or interest in using TrustDevice Pro can be found on the [www.trustdecision.com](https://www.trustdecision.com/trustDevice),  registered account for a free trial; or via email TrustDevice@TrustDecision.com contact us directly and quickly open the service.
+In addition, any idea or interest in using TrustDevice Pro can be found on the [www.trustdecision.com](https://www.trustdecision.com/trustDevice),  registered account for a free trial; or via email trustdevice@trustdecision.com contact us directly and quickly open the service.
 
 ## TrustDevice Android Demo App
 
