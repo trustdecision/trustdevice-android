@@ -176,8 +176,8 @@ TDRisk.initWithOptions(context, builder);
 Full product comparison:
 
 |                               | Open Source |       Pro        |
-| ----------------------------- | :---------: | :--------------: |
-| 100% open source              |     yes     |        no        |
+| ----------------------------- |:-----------:|:----------------:|
+| 100% open source              |     Yes     |        No        |
 | Device ID                     |    Basic    | Extremely stable |
 | Device Risk Label             |    Basic    |  Extremely rich  |
 | Device Details                |    Basic    |  Extremely rich  |
@@ -229,9 +229,13 @@ In addition, any idea or interest in using TrustDevice Pro can be found on the [
 
 Try the library features in the [TrustDevice Android Demo App](https://github.com/trustdecision/trustdevice-android/releases/download/1.0.0/TrustDevice-release-1.0.0.apk).
 
-## Android API support
+## Compatibility
 
-trustdevice-android supports API versions from 21 (Android 5.0) and higher.
+| Items                     | Description             |
+| :-----------------------: |:-----------------------:|
+| Supported System Versions | Android5.0+ ( API 21+ ) |
+| Supported Architecture    | armeabi, armeabi-v7a, arm64-v8a, x86 |
 
 ## License
-This library is MIT licensed. Copyright trustdecision, Inc. 2022.TrustDevice@TrustDecision.com 
+
+This library is MIT licensed. Copyright trustdecision, Inc. 2022.
