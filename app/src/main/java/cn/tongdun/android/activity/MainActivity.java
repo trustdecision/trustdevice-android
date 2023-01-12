@@ -48,16 +48,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         createDeviceInfo();
-//        TDRisk.Builder builder = new TDRisk.Builder();
-//        builder.callback(new TDRiskCallback() {
-//            @Override
-//            public void onEvent(JSONObject deviceInfo) {
-//                String deviceID = deviceInfo.optString("device_id");
-//                JSONObject deviceRisk = deviceInfo.optJSONObject("device_risk_label");
-//                JSONObject deviceDetail = deviceInfo.optJSONObject("device_detail");
-//            }
-//        });
-//        TDRisk.initWithOptions(this, builder);
     }
 
     @Override
