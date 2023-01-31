@@ -33,7 +33,7 @@ public class DeviceInfoUtils {
         }
         try {
             result.put(Constants.KEY_DEVICE_ID, deviceId);
-            result.put(Constants.KEY_DEVICE_RISK_LABEL,  deviceRisk(detail));
+            result.put(Constants.KEY_DEVICE_RISK_LABEL, deviceRisk(detail));
             result.put(Constants.KEY_DEVICE_DETAIL, detail);
         } catch (JSONException ignored) {
         }
@@ -62,7 +62,11 @@ public class DeviceInfoUtils {
         }
         String filePath = data.optString(Constants.KEY_FILES_ABSOLUTE_PATH);
         String packageName = data.optString(Constants.KEY_PACKAGE_NAME);
-        String dir = filePath.split(packageName)[0];
+        String[] filePaths = filePath.split(packageName);
+        if (filePaths.length <= 0) {
+            return "false";
+        }
+        String dir = filePaths[0];
         int riskLength = 3;
         if (dir.startsWith(File.separator)) {
             riskLength = 4;
