@@ -4,8 +4,10 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import java.lang.reflect.Method;
+
 /**
- * @description: DevicePersonalizationInfoCollector
+ * @description: DeviceBaseInfoCollector
  * @author: wuzuchang
  * @date: 2022/12/6
  */
@@ -42,5 +44,16 @@ public class DeviceBaseInfoCollector {
         } catch (Exception ignored) {
         }
         return "";
+    }
+
+    public boolean isHarmonyOS() {
+        try {
+            Class<?> clz = Class.forName("com.huawei.system.BuildEx");
+            Method method = clz.getMethod("getOsBrand");
+            String os = (String) method.invoke(clz);
+            return "harmony".equalsIgnoreCase(os);
+        } catch (Exception ignored) {
+        }
+        return false;
     }
 }

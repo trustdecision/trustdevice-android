@@ -56,6 +56,7 @@ public class DeviceInfo {
     private String screenResolution;
     private String filesAbsolutePath;
     private String packageName;
+    private boolean harmonyOS;
 
     public void setModel(String model) {
         this.model = model;
@@ -251,5 +252,9 @@ public class DeviceInfo {
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+
+    public void setHarmonyOS(boolean harmony_OS) {
+        this.harmonyOS = harmony_OS;
     }
 }

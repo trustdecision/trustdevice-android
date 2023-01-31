@@ -123,6 +123,7 @@ public class FMCore {
         mDeviceInfo.setScreenResolution(deviceBaseInfoCollector.getScreenResolution());
         mDeviceInfo.setFilesAbsolutePath(deviceBaseInfoCollector.getFilesAbsolutePath());
         mDeviceInfo.setPackageName(deviceBaseInfoCollector.getPackageName());
+        mDeviceInfo.setHarmonyOS(deviceBaseInfoCollector.isHarmonyOS());
     }
 
     private void collectorDevicePersonalizationInfo() {
