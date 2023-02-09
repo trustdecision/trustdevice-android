@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_background">#F5F5F5</color>
-    <color name="item_card_background">@color/white</color>
-    <color name="arrow_color">@color/black</color>
-    <color name="normal_text">@color/black</color>
-    <color name="dividing_line">#F2F2F2</color>
+    <color name="app_background">#222222</color>
+    <color name="item_card_background">#1B1B1B</color>
+    <color name="arrow_color">@color/white</color>
+    <color name="normal_text">@color/white</color>
+    <color name="dividing_line">#232323</color>
 </resources>
