@@ -57,6 +57,7 @@ public class Constants {
     public static final String KEY_SCREEN_BRIGHTNESS = "screenBrightness";
     public static final String KEY_SCREEN_OFF_TIMEOUT = "screenOffTimeout";
     public static final String KEY_SCREEN_RESOLUTION = "screenResolution";
+    public static final String KEY_SCREEN_INCHES = "screenInches";
     public static final String KEY_FILES_ABSOLUTE_PATH = "filesAbsolutePath";
     public static final String KEY_PACKAGE_NAME = "packageName";
 }

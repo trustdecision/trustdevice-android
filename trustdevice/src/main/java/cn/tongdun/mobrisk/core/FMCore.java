@@ -121,6 +121,7 @@ public class FMCore {
     private void collectorDeviceBaseInfo() {
         DeviceBaseInfoCollector deviceBaseInfoCollector = new DeviceBaseInfoCollector(mContext);
         mDeviceInfo.setScreenResolution(deviceBaseInfoCollector.getScreenResolution());
+        mDeviceInfo.setScreenInches(deviceBaseInfoCollector.getScreenInches());
         mDeviceInfo.setFilesAbsolutePath(deviceBaseInfoCollector.getFilesAbsolutePath());
         mDeviceInfo.setPackageName(deviceBaseInfoCollector.getPackageName());
         mDeviceInfo.setHarmonyOS(deviceBaseInfoCollector.isHarmonyOS());

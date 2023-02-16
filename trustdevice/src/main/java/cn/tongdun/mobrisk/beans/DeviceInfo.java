@@ -54,6 +54,7 @@ public class DeviceInfo {
     private String screenBrightness;
     private String screenOffTimeout;
     private String screenResolution;
+    private double screenInches;
     private String filesAbsolutePath;
     private String packageName;
     private boolean harmonyOS;
@@ -244,6 +245,10 @@ public class DeviceInfo {
 
     public void setScreenResolution(String screenResolution) {
         this.screenResolution = screenResolution;
+    }
+
+    public void setScreenInches(double screenInches) {
+        this.screenInches = screenInches;
     }
 
     public void setFilesAbsolutePath(String filesAbsolutePath) {

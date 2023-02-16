@@ -17,6 +17,7 @@ import cn.tongdun.mobrisk.providers.InfoProvider;
 @Deprecated(since = "pro no such class")
 public class ScreenInfoProvider extends InfoProvider<String> {
     private final JSONObject mDeviceInfo;
+
     public ScreenInfoProvider(JSONObject deviceInfo) {
         mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_DETAIL);
     }
@@ -26,6 +27,13 @@ public class ScreenInfoProvider extends InfoProvider<String> {
             return "";
         }
         return mDeviceInfo.optString(Constants.KEY_SCREEN_RESOLUTION);
+    }
+
+    private String getScreenInches() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_SCREEN_INCHES);
     }
 
     private String getScreenBrightness() {
@@ -49,6 +57,6 @@ public class ScreenInfoProvider extends InfoProvider<String> {
 
     @Override
     public List<Pair<String, String>> getRawData() {
-        return new ScreenInfoRawData(getScreenResolution(), getScreenBrightness(), getScreenOffTimeout()).loadData();
+        return new ScreenInfoRawData(getScreenResolution(), getScreenInches(), getScreenBrightness(), getScreenOffTimeout()).loadData();
     }
 }
