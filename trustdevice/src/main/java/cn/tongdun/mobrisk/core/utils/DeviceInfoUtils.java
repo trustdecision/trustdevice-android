@@ -49,6 +49,7 @@ public class DeviceInfoUtils {
             risk.put(Constants.KEY_ROOT, data.opt(Constants.KEY_ROOT));
             risk.put(Constants.KEY_DEBUG, data.opt(Constants.KEY_DEBUG));
             risk.put(Constants.KEY_MULTIPLE, getMultiple(data));
+            risk.put(Constants.KEY_XPOSED, data.opt(Constants.KEY_XPOSED));
         } catch (JSONException e) {
             e.printStackTrace();
         }

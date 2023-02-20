@@ -27,6 +27,7 @@ import cn.tongdun.mobrisk.core.collectors.MemoryInfoCollector;
 import cn.tongdun.mobrisk.core.collectors.RootCollector;
 import cn.tongdun.mobrisk.core.collectors.SensorsInfoCollector;
 import cn.tongdun.mobrisk.core.collectors.SettingInfoCollector;
+import cn.tongdun.mobrisk.core.collectors.XposedCollector;
 import cn.tongdun.mobrisk.core.utils.DeviceInfoUtils;
 import cn.tongdun.mobrisk.core.utils.LogUtils;
 
@@ -67,6 +68,7 @@ public class FMCore {
             collectorDeviceId();
             collectorDebugInfo();
             collectorRoot();
+            collectorXposed();
             collectorBuildInfo();
             collectorDeviceBaseInfo();
             collectorDevicePersonalizationInfo();
@@ -100,6 +102,11 @@ public class FMCore {
     private void collectorRoot() {
         RootCollector rootCollector = new RootCollector();
         mDeviceInfo.setRoot(rootCollector.getRoot());
+    }
+
+    private void collectorXposed() {
+        XposedCollector xposedCollector = new XposedCollector();
+        mDeviceInfo.setXposedStatus(xposedCollector.findXposed());
     }
 
     private void collectorBuildInfo() {

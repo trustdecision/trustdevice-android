@@ -33,6 +33,7 @@ public class DeviceInfo {
     private String abiType;
     private boolean debug;
     private boolean root;
+    private boolean xposed;
     private String country;
     private String language;
     private String timezone;
@@ -149,6 +150,10 @@ public class DeviceInfo {
 
     public void setRoot(boolean root) {
         this.root = root;
+    }
+
+    public void setXposedStatus(boolean xposedStatus) {
+        this.xposed = xposedStatus;
     }
 
     public void setAndroidId(String androidId) {

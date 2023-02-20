@@ -43,6 +43,14 @@ public class RiskInfoProvider extends InfoProvider<String> {
         return mDeviceInfo.optString(Constants.KEY_MULTIPLE);
     }
 
+    private String getXposedStatus() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_XPOSED);
+    }
+
+
     @Override
     public String getProviderName() {
         return "Risk info";
@@ -50,6 +58,6 @@ public class RiskInfoProvider extends InfoProvider<String> {
 
     @Override
     public List<Pair<String, String>> getRawData() {
-        return new RiskInfoRawData(getRoot(), getDebug(), getMultiple()).loadData();
+        return new RiskInfoRawData(getRoot(), getDebug(), getMultiple(), getXposedStatus()).loadData();
     }
 }

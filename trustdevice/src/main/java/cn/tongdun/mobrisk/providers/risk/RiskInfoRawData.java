@@ -18,11 +18,13 @@ public class RiskInfoRawData extends RawData<String> {
     private String root;
     private String debug;
     private String multiple;
+    private String xposed;
 
-    public RiskInfoRawData(String root, String debug, String multiple) {
+    public RiskInfoRawData(String root, String debug, String multiple, String xposed) {
         this.root = root;
         this.debug = debug;
         this.multiple = multiple;
+        this.xposed = xposed;
     }
 
     private String getRoot() {
@@ -34,8 +36,11 @@ public class RiskInfoRawData extends RawData<String> {
     }
 
     private String getMultiple() {
-
         return multiple;
+    }
+
+    private String getXposedStatus() {
+        return xposed;
     }
 
     @Override
@@ -44,6 +49,7 @@ public class RiskInfoRawData extends RawData<String> {
         data.add(new Pair<>("root", getRoot()));
         data.add(new Pair<>("debug", getDebug()));
         data.add(new Pair<>("multiple", getMultiple()));
+        data.add(new Pair<>("xposed", getXposedStatus()));
         return data;
     }
 }
