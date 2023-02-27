@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import cn.tongdun.mobrisk.providers.RawData;
 
@@ -27,19 +28,19 @@ public class MemoryInfoRawData extends RawData<String> {
     }
 
     private String getTotalMemory() {
-        return totalMemory;
+        return String.format(Locale.US, "%.2fMB", Long.parseLong(totalMemory) / Math.pow(1024, 2));
     }
 
     private String getAvailableMemory() {
-        return availableMemory;
+        return String.format(Locale.US, "%.2fMB", Long.parseLong(availableMemory) / Math.pow(1024, 2));
     }
 
     private String getTotalStorage() {
-        return totalStorage;
+        return String.format(Locale.US, "%.2fGB", Long.parseLong(totalStorage) / Math.pow(1024, 3));
     }
 
     private String getAvailableStorage() {
-        return availableStorage;
+        return String.format(Locale.US, "%.2fGB", Long.parseLong(availableStorage) / Math.pow(1024, 3));
     }
 
     @Override
