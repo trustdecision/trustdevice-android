@@ -78,6 +78,13 @@ public class SettingInfoProvider extends InfoProvider<String> {
         return mDeviceInfo.optString(Constants.KEY_TOUCH_EXPLORATION_ENABLED);
     }
 
+    private int getScreenOffTimeout() {
+        if (mDeviceInfo == null) {
+            return 0;
+        }
+        return mDeviceInfo.optInt(Constants.KEY_SCREEN_OFF_TIMEOUT);
+    }
+
     @Override
     public String getProviderName() {
         return "Setting info";
@@ -85,6 +92,6 @@ public class SettingInfoProvider extends InfoProvider<String> {
 
     @Override
     public List<Pair<String, String>> getRawData() {
-        return new SettingInfoRawData(getAdbEnable(), getDevelopmentSettingEnabled(), getHttpProxy(), getDataRoaming(), getAllowMockLocation(), getAccessibilityEnabled(), getDefaultInputMethod(), getTouchExplorationEnabled()).loadData();
+        return new SettingInfoRawData(getAdbEnable(), getDevelopmentSettingEnabled(), getHttpProxy(), getDataRoaming(), getAllowMockLocation(), getAccessibilityEnabled(), getDefaultInputMethod(), getTouchExplorationEnabled(),getScreenOffTimeout()).loadData();
     }
 }

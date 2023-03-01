@@ -22,6 +22,20 @@ public class AppListProvider extends InfoProvider<String[]> {
         mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_DETAIL);
     }
 
+    public int getUserAppTotal(){
+        if (mDeviceInfo == null) {
+            return 0;
+        }
+        return mDeviceInfo.optString(Constants.KEY_APP_LIST).split(",").length;
+    }
+
+    public int getSystemAppTotal(){
+        if (mDeviceInfo == null) {
+            return 0;
+        }
+        return mDeviceInfo.optString(Constants.KEY_SYSTEM_APP_LIST).split(",").length;
+    }
+
     private String getAppList() {
         if (mDeviceInfo == null) {
             return "";

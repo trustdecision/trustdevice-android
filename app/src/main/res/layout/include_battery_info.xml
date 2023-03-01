@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/memory_battery_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_card_background"
+    android:padding="15dp"
+    tools:ignore="MissingDefaultResource"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+
+    <ImageView
+        android:id="@+id/iv_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_battery"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_battery_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/battery_title" />
+
+    <TextView
+        android:id="@+id/battery_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/battery_title"
+        android:textColor="@color/normal_text"
+        app:layout_constraintStart_toEndOf="@+id/iv_battery"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_battery_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/battery_title"
+        app:layout_constraintStart_toEndOf="@+id/battery_title"
+        app:layout_constraintTop_toTopOf="@+id/battery_title"
+        tools:text="charging" />
+
+    <TextView
+        android:id="@+id/tv_battery_health"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/battery_title"
+        app:layout_constraintTop_toBottomOf="@+id/battery_title"
+        tools:text="health status" />
+
+    <ProgressBar
+        android:id="@+id/battery_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progressBackgroundTint="@color/app_theme"
+        android:progressTint="@color/app_theme"
+        app:layout_constraintEnd_toStartOf="@+id/tv_battery_power"
+        app:layout_constraintStart_toStartOf="@+id/tv_battery_health"
+        app:layout_constraintTop_toBottomOf="@+id/tv_battery_health" />
+
+    <TextView
+        android:id="@+id/tv_battery_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/battery_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/battery_progress"
+        app:layout_constraintTop_toTopOf="@+id/battery_progress"
+        tools:text="70%" />
+
+    <TextView
+        android:id="@+id/tv_battery_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/battery_progress"
+        app:layout_constraintTop_toBottomOf="@+id/battery_progress"
+        tools:text="temperature: 20℃" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,44 +1,29 @@
 package cn.tongdun.android.activity;
 
-import android.text.TextUtils;
-import android.util.Pair;
+import android.widget.TextView;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.trustdevice.android.R;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import cn.tongdun.android.adapter.DeviceModuleItemAdapter;
+import cn.tongdun.android.adapter.ViewPagerAdapter;
 import cn.tongdun.android.base.BaseActivity;
-import cn.tongdun.android.beans.DetailsItemBean;
-import cn.tongdun.android.beans.DeviceModuleItemBean;
-import cn.tongdun.mobrisk.TDRisk;
-import cn.tongdun.mobrisk.TDRiskCallback;
-import cn.tongdun.mobrisk.providers.InfoProvider;
-import cn.tongdun.mobrisk.providers.applist.AppListProvider;
-import cn.tongdun.mobrisk.providers.battery.BatteryInfoProvider;
-import cn.tongdun.mobrisk.providers.build.BuildInfoProvider;
-import cn.tongdun.mobrisk.providers.cpu.CpuInfoProvider;
-import cn.tongdun.mobrisk.providers.device_id.DeviceIdProvider;
-import cn.tongdun.mobrisk.providers.memory.MemoryInfoProvider;
-import cn.tongdun.mobrisk.providers.risk.RiskInfoProvider;
-import cn.tongdun.mobrisk.providers.screen.ScreenInfoProvider;
-import cn.tongdun.mobrisk.providers.sensor.SensorInfoProvider;
-import cn.tongdun.mobrisk.providers.setting.SettingInfoProvider;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.device_info_container)
-    RecyclerView rvDeviceInfoContainer;
-    private DeviceModuleItemAdapter mAdapter;
-    private List<DeviceModuleItemBean> mItemData = new ArrayList<>();
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager2 mViewPager;
+
+    private final List<String> mTabList = new ArrayList<>();
+    private TabLayoutMediator mTabLayoutMediator;
 
     @Override
     protected int getContentViewResId() {
@@ -47,54 +32,27 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        createDeviceInfo();
+        mTabList.add("Device id");
+        mTabList.add("Device info");
     }
 
     @Override
     protected void initView() {
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(GridLayoutManager.VERTICAL);
-        rvDeviceInfoContainer.setLayoutManager(manager);
-        mAdapter = new DeviceModuleItemAdapter(mItemData);
-        rvDeviceInfoContainer.setAdapter(mAdapter);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(mTabList.size(), getSupportFragmentManager(), getLifecycle());
+        mViewPager.setOffscreenPageLimit(ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT);
+        mViewPager.setAdapter(viewPagerAdapter);
+        mTabLayoutMediator = new TabLayoutMediator(mTabLayout, mViewPager, (tab, position) -> {
+            TextView tabView = new TextView(MainActivity.this);
+            tabView.setText(mTabList.get(position));
+            tab.setCustomView(tabView);
+        });
+        // binding
+        mTabLayoutMediator.attach();
     }
 
-    private void createDeviceInfo() {
-        JSONObject deviceInfo = TDRisk.getBlackbox();
-        createData(deviceInfo);
-    }
-
-    private void createData(JSONObject deviceInfo) {
-        createItemInfo(new DeviceIdProvider(deviceInfo));
-        createItemInfo(new RiskInfoProvider(deviceInfo));
-        createItemInfo(new BuildInfoProvider(deviceInfo));
-        createItemInfo(new ScreenInfoProvider(deviceInfo));
-        createItemInfo(new BatteryInfoProvider(deviceInfo));
-        createItemInfo(new SettingInfoProvider(deviceInfo));
-        createItemInfo(new CpuInfoProvider(deviceInfo));
-        createItemInfo(new MemoryInfoProvider(deviceInfo));
-        createItemInfo(new SensorInfoProvider(deviceInfo));
-        createAppList(new AppListProvider(deviceInfo));
-    }
-
-    private void createItemInfo(InfoProvider<String> infoProvider) {
-        List<DetailsItemBean> detailsItemBeanList = new ArrayList<>();
-        for (Pair<String, String> infos : infoProvider.getRawData()) {
-            detailsItemBeanList.add(new DetailsItemBean(infos.first, infos.second));
-        }
-        mItemData.add(new DeviceModuleItemBean(infoProvider.getProviderName(), detailsItemBeanList));
-    }
-
-    private void createAppList(InfoProvider<String[]> appListProvider) {
-        for (Pair<String, String[]> infos : appListProvider.getRawData()) {
-            List<DetailsItemBean> appListDetailsItemList = new ArrayList<>();
-            for (String appInfo : infos.second) {
-                if (TextUtils.isEmpty(appInfo)) {
-                    continue;
-                }
-                appListDetailsItemList.add(new DetailsItemBean(appInfo, ""));
-            }
-            mItemData.add(new DeviceModuleItemBean(infos.first, appListDetailsItemList));
-        }
+    @Override
+    protected void onDestroy() {
+        mTabLayoutMediator.detach();
+        super.onDestroy();
     }
 }

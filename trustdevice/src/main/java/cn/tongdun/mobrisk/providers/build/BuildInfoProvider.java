@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import java.util.List;
 
 import cn.tongdun.mobrisk.core.utils.Constants;
-import cn.tongdun.mobrisk.providers.InfoProvider;
 
 /**
  * @description: BuildInfo Provider
@@ -15,21 +14,21 @@ import cn.tongdun.mobrisk.providers.InfoProvider;
  * @date: 2022/12/6
  */
 @Deprecated(since = "pro no such class")
-public class BuildInfoProvider extends InfoProvider<String> {
+public class BuildInfoProvider {
     private final JSONObject mDeviceInfo;
 
     public BuildInfoProvider(JSONObject deviceInfo) {
         mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_DETAIL);
     }
 
-    private String getModel() {
+    public String getModel() {
         if (mDeviceInfo == null) {
             return "";
         }
         return mDeviceInfo.optString(Constants.KEY_MODEL);
     }
 
-    private String getBrand() {
+    public String getBrand() {
         if (mDeviceInfo == null) {
             return "";
         }
@@ -50,7 +49,7 @@ public class BuildInfoProvider extends InfoProvider<String> {
         return mDeviceInfo.optString(Constants.KEY_ANDROID_VERSION);
     }
 
-    public String getSdkVersion() {
+    private String getSdkVersion() {
         if (mDeviceInfo == null) {
             return "";
         }
@@ -78,13 +77,36 @@ public class BuildInfoProvider extends InfoProvider<String> {
         return mDeviceInfo.optString(Constants.KEY_HOST);
     }
 
-    @Override
-    public String getProviderName() {
-        return "Build info ";
+
+    private String getScreenResolution() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_SCREEN_RESOLUTION);
     }
 
-    @Override
+    private String getScreenInches() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_SCREEN_INCHES);
+    }
+
+    private String getScreenBrightness() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_SCREEN_BRIGHTNESS);
+    }
+
+    private String getScreenOffTimeout() {
+        if (mDeviceInfo == null) {
+            return "";
+        }
+        return mDeviceInfo.optString(Constants.KEY_SCREEN_OFF_TIMEOUT);
+    }
+
     public List<Pair<String, String>> getRawData() {
-        return new BuildInfoRawData(getModel(), getBrand(), getManufacturer(), getAndroidVersion(), getSdkVersion(), getKernelVersion(), getFingerprint(), getHost()).loadData();
+        return new BuildInfoRawData(getModel(), getBrand(), getManufacturer(), getAndroidVersion(), getSdkVersion(), getKernelVersion(), getFingerprint(), getHost(), getScreenResolution(), getScreenInches(), getScreenBrightness(), getScreenOffTimeout()).loadData();
     }
 }

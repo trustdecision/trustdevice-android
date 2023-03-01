@@ -1,9 +1,10 @@
 package cn.tongdun.mobrisk.providers.risk;
 
-import android.util.Pair;
+import android.text.TextUtils;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.tongdun.mobrisk.core.utils.Constants;
@@ -15,49 +16,55 @@ import cn.tongdun.mobrisk.providers.InfoProvider;
  * @date: 2022/12/6
  */
 @Deprecated(since = "pro no such class")
-public class RiskInfoProvider extends InfoProvider<String> {
+public class RiskInfoProvider {
     private final JSONObject mDeviceInfo;
 
     public RiskInfoProvider(JSONObject deviceInfo) {
         mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_RISK_LABEL);
     }
 
-    private String getRoot() {
+    private boolean getRoot() {
         if (mDeviceInfo == null) {
-            return "";
+            return false;
         }
-        return mDeviceInfo.optString(Constants.KEY_ROOT);
+        return mDeviceInfo.optBoolean(Constants.KEY_ROOT);
     }
 
-    private String getDebug() {
+    private boolean getDebug() {
         if (mDeviceInfo == null) {
-            return "";
+            return false;
         }
-        return mDeviceInfo.optString(Constants.KEY_DEBUG);
+        return mDeviceInfo.optBoolean(Constants.KEY_DEBUG);
     }
 
-    private String getMultiple() {
+    private boolean getMultiple() {
         if (mDeviceInfo == null) {
-            return "";
+            return false;
         }
-        return mDeviceInfo.optString(Constants.KEY_MULTIPLE);
+        return mDeviceInfo.optBoolean(Constants.KEY_MULTIPLE);
     }
 
-    private String getXposedStatus() {
+    private boolean getXposedStatus() {
         if (mDeviceInfo == null) {
-            return "";
+            return false;
         }
-        return mDeviceInfo.optString(Constants.KEY_XPOSED);
+        return mDeviceInfo.optBoolean(Constants.KEY_XPOSED);
     }
 
-
-    @Override
-    public String getProviderName() {
-        return "Risk info";
-    }
-
-    @Override
-    public List<Pair<String, String>> getRawData() {
-        return new RiskInfoRawData(getRoot(), getDebug(), getMultiple(), getXposedStatus()).loadData();
+    public String getRiskLabels() {
+        List<String> riskLabels = new ArrayList<>();
+        if (getRoot()) {
+            riskLabels.add("root");
+        }
+        if (getDebug()) {
+            riskLabels.add("debug");
+        }
+        if (getMultiple()) {
+            riskLabels.add("multiple");
+        }
+        if (getXposedStatus()) {
+            riskLabels.add("Xposed");
+        }
+        return TextUtils.join(",", riskLabels);
     }
 }

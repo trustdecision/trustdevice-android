@@ -15,27 +15,25 @@ import cn.tongdun.mobrisk.providers.InfoProvider;
  * @date: 2022/12/6
  */
 @Deprecated(since = "pro no such class")
-public class SensorInfoProvider extends InfoProvider<String> {
+public class SensorInfoProvider{
     private final JSONObject mDeviceInfo;
 
     public SensorInfoProvider(JSONObject deviceInfo) {
         mDeviceInfo = deviceInfo.optJSONObject(Constants.KEY_DEVICE_DETAIL);
     }
 
-    private String getSensorInfo() {
+    public int getSensorTotal() {
+        if (mDeviceInfo == null) {
+            return 0;
+        }
+        return mDeviceInfo.optString(Constants.KEY_SENSORS_INFO).split(",").length;
+    }
+
+    public String getSensorInfo() {
         if (mDeviceInfo == null) {
             return "";
         }
         return mDeviceInfo.optString(Constants.KEY_SENSORS_INFO);
     }
 
-    @Override
-    public String getProviderName() {
-        return "Sensor info";
-    }
-
-    @Override
-    public List<Pair<String, String>> getRawData() {
-        return new SensorInfoRawData(getSensorInfo()).loadData();
-    }
 }

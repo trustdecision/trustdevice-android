@@ -1,22 +1,22 @@
 package cn.tongdun.android.adapter;
 
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
 
 import com.trustdevice.android.R;
-import cn.tongdun.android.beans.DetailsItemBean;
 
 import java.util.List;
 
 /**
- * @description: Details Item Adapter
+ * @description: BuildInfo Item Adapter
  * @author: wuzuchang
  * @date: 2022/12/6
  */
-public class DetailsItemAdapter extends BaseRecyclerViewAdapter<DetailsItemBean> {
+public class DeviceInfoItemAdapter extends BaseRecyclerViewAdapter<Pair<String, String>> {
 
-    public DetailsItemAdapter(List<DetailsItemBean> data) {
+    public DeviceInfoItemAdapter(List<Pair<String, String>> data) {
         super(data);
     }
 
@@ -26,14 +26,14 @@ public class DetailsItemAdapter extends BaseRecyclerViewAdapter<DetailsItemBean>
     }
 
     @Override
-    public void convert(BaseViewHolder holder, DetailsItemBean data, int position) {
+    public void convert(BaseViewHolder holder, Pair<String, String> data, int position) {
         TextView name = holder.getView(R.id.tv_name);
-        name.setText(data.getName());
+        name.setText(data.first);
         TextView value = holder.getView(R.id.tv_value);
-        if (TextUtils.isEmpty(data.getValue())) {
+        if (TextUtils.isEmpty(data.second)) {
             value.setVisibility(View.GONE);
         } else {
-            value.setText(data.getValue());
+            value.setText(data.second);
         }
     }
 }

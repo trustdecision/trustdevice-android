@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/app_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <include
+            android:id="@+id/build_info_layout"
+            layout="@layout/include_build_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <include
+            android:id="@+id/setting_layout"
+            layout="@layout/include_setting_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/build_info_layout"
+            app:layout_constraintStart_toStartOf="@+id/build_info_layout"
+            app:layout_constraintTop_toBottomOf="@+id/build_info_layout" />
+
+        <include
+            android:id="@+id/memory_info_layout"
+            layout="@layout/include_memory_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/setting_layout"
+            app:layout_constraintStart_toStartOf="@+id/setting_layout"
+            app:layout_constraintTop_toBottomOf="@+id/setting_layout" />
+
+        <include
+            android:id="@+id/battery_info_layout"
+            layout="@layout/include_battery_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/memory_info_layout"
+            app:layout_constraintStart_toStartOf="@+id/memory_info_layout"
+            app:layout_constraintTop_toBottomOf="@+id/memory_info_layout" />
+
+        <include
+            android:id="@+id/all_apps_layout"
+            layout="@layout/include_installed_app_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@id/all_sensor_layout"
+            app:layout_constraintStart_toStartOf="@+id/battery_info_layout"
+            app:layout_constraintTop_toBottomOf="@+id/battery_info_layout" />
+
+        <include
+            android:id="@+id/all_sensor_layout"
+            layout="@layout/include_sensor_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/all_apps_layout"
+            app:layout_constraintTop_toTopOf="@id/all_apps_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

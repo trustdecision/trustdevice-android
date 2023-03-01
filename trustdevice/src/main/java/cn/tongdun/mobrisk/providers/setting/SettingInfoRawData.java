@@ -4,6 +4,7 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import cn.tongdun.mobrisk.providers.RawData;
 
@@ -22,8 +23,9 @@ public class SettingInfoRawData extends RawData<String> {
     private String accessibilityEnabled;
     private String defaultInputMethod;
     private String touchExplorationEnabled;
+    private int screenOffTimeout;
 
-    public SettingInfoRawData(String adbEnable, String developmentSettingEnabled, String httpProxy, String dataRoaming, String allowMockLocation, String accessibilityEnabled, String defaultInputMethod, String touchExplorationEnabled) {
+    public SettingInfoRawData(String adbEnable, String developmentSettingEnabled, String httpProxy, String dataRoaming, String allowMockLocation, String accessibilityEnabled, String defaultInputMethod, String touchExplorationEnabled, int screenOffTimeout) {
         this.adbEnable = adbEnable;
         this.developmentSettingEnabled = developmentSettingEnabled;
         this.httpProxy = httpProxy;
@@ -32,6 +34,7 @@ public class SettingInfoRawData extends RawData<String> {
         this.accessibilityEnabled = accessibilityEnabled;
         this.defaultInputMethod = defaultInputMethod;
         this.touchExplorationEnabled = touchExplorationEnabled;
+        this.screenOffTimeout = screenOffTimeout;
     }
 
     private String getAdbEnable() {
@@ -70,6 +73,10 @@ public class SettingInfoRawData extends RawData<String> {
         return "1".equals(data) ? "open" : "close";
     }
 
+    public int getScreenOffTimeout() {
+        return screenOffTimeout;
+    }
+
     @Override
     public List<Pair<String, String>> loadData() {
         List<Pair<String, String>> data = new ArrayList<>();
@@ -79,6 +86,7 @@ public class SettingInfoRawData extends RawData<String> {
         data.add(new Pair<>("mock location", getAllowMockLocation()));
         data.add(new Pair<>("accessibility", getAccessibilityEnabled()));
         data.add(new Pair<>("touch exploration", getTouchExplorationEnabled()));
+        data.add(new Pair<>("screen off timeout", String.format(Locale.US, "%dS", getScreenOffTimeout() / 1000)));
         data.add(new Pair<>("http proxy", getHttpProxy()));
         data.add(new Pair<>("default inputMethod", getDefaultInputMethod()));
         return data;
