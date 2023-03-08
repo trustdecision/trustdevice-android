@@ -63,7 +63,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ env.RELEASE_NAME }}
           body:
-            The first version of trustdevice-android library.
+            update demo app.
           draft: false
           prerelease: false
 
