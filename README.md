@@ -226,7 +226,7 @@ In addition, any idea or interest in using TrustDevice Pro can be found on the [
 
 ## TrustDevice Android Demo App
 
-Try the library features in the [TrustDevice Android Demo App](https://github.com/trustdecision/trustdevice-android/releases/download/1.0.1/TrustDevice-release-1.0.0.apk).
+Try the library features in the [TrustDevice Android Demo App](https://github.com/trustdecision/trustdevice-android/releases/download/1.0.1/TrustDevice-release-1.0.1.apk).
 
 ## Compatibility
 
