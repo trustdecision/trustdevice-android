@@ -51,6 +51,13 @@ public class RiskInfoProvider {
         return mDeviceInfo.optBoolean(Constants.KEY_XPOSED);
     }
 
+    private boolean getMagiskStatus() {
+        if (mDeviceInfo == null) {
+            return false;
+        }
+        return mDeviceInfo.optBoolean(Constants.KEY_MAGISK);
+    }
+
     public String getRiskLabels() {
         List<String> riskLabels = new ArrayList<>();
         if (getRoot()) {
@@ -64,6 +71,9 @@ public class RiskInfoProvider {
         }
         if (getXposedStatus()) {
             riskLabels.add("Xposed");
+        }
+        if (getMagiskStatus()) {
+            riskLabels.add("Magisk");
         }
         return TextUtils.join(",", riskLabels);
     }

@@ -37,6 +37,7 @@ public class Constants {
     public static final String KEY_MULTIPLE = "multiple";
     public static final String KEY_ROOT = "root";
     public static final String KEY_XPOSED = "xposed";
+    public static final String KEY_MAGISK = "magisk";
     public static final String KEY_COUNTRY = "country";
     public static final String KEY_LANGUAGE = "language";
     public static final String KEY_TIMEZONE = "timezone";
@@ -61,4 +62,9 @@ public class Constants {
     public static final String KEY_SCREEN_INCHES = "screenInches";
     public static final String KEY_FILES_ABSOLUTE_PATH = "filesAbsolutePath";
     public static final String KEY_PACKAGE_NAME = "packageName";
+
+    //magisk related files
+    public static final String MAGISK_MOUNTS_PATH = "/proc/self/mounts";
+    public static final String MAGISK_MOUNT_INFO_PATH = "/proc/self/mountinfo";
+    public static final String MAGISK_MOUNT_STATS_PATH = "/proc/self/mountstats";
 }

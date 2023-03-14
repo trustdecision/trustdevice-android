@@ -23,6 +23,7 @@ import cn.tongdun.mobrisk.core.collectors.DebugInfoCollector;
 import cn.tongdun.mobrisk.core.collectors.DeviceBaseInfoCollector;
 import cn.tongdun.mobrisk.core.collectors.DeviceIdCollector;
 import cn.tongdun.mobrisk.core.collectors.DevicePersonalizationInfoCollector;
+import cn.tongdun.mobrisk.core.collectors.MagiskCollector;
 import cn.tongdun.mobrisk.core.collectors.MemoryInfoCollector;
 import cn.tongdun.mobrisk.core.collectors.RootCollector;
 import cn.tongdun.mobrisk.core.collectors.SensorsInfoCollector;
@@ -69,6 +70,7 @@ public class FMCore {
             collectorDebugInfo();
             collectorRoot();
             collectorXposed();
+            collectorMagisk();
             collectorBuildInfo();
             collectorDeviceBaseInfo();
             collectorDevicePersonalizationInfo();
@@ -107,6 +109,11 @@ public class FMCore {
     private void collectorXposed() {
         XposedCollector xposedCollector = new XposedCollector();
         mDeviceInfo.setXposedStatus(xposedCollector.findXposed());
+    }
+
+    private void collectorMagisk() {
+        MagiskCollector magiskCollector = new MagiskCollector();
+        mDeviceInfo.setMagiskStatus(magiskCollector.detectMagisk());
     }
 
     private void collectorBuildInfo() {

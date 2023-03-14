@@ -50,6 +50,7 @@ public class DeviceInfoUtils {
             risk.put(Constants.KEY_DEBUG, data.opt(Constants.KEY_DEBUG));
             risk.put(Constants.KEY_MULTIPLE, getMultiple(data));
             risk.put(Constants.KEY_XPOSED, data.opt(Constants.KEY_XPOSED));
+            risk.put(Constants.KEY_MAGISK, data.opt(Constants.KEY_MAGISK));
         } catch (JSONException e) {
             e.printStackTrace();
         }

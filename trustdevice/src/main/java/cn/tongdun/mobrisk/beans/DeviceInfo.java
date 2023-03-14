@@ -34,6 +34,7 @@ public class DeviceInfo {
     private boolean debug;
     private boolean root;
     private boolean xposed;
+    private boolean magisk;
     private String country;
     private String language;
     private String timezone;
@@ -154,6 +155,10 @@ public class DeviceInfo {
 
     public void setXposedStatus(boolean xposedStatus) {
         this.xposed = xposedStatus;
+    }
+
+    public void setMagiskStatus(boolean magiskStatus) {
+        this.magisk = magiskStatus;
     }
 
     public void setAndroidId(String androidId) {
