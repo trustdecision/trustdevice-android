@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
         mTabLayoutMediator = new TabLayoutMediator(mTabLayout, mViewPager, (tab, position) -> {
             TextView tabView = new TextView(MainActivity.this);
             tabView.setText(mTabList.get(position));
+            tabView.setTextColor(getResources().getColor(R.color.normal_text));
             tab.setCustomView(tabView);
         });
         // binding
