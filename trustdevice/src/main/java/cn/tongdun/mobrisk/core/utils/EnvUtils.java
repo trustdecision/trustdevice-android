@@ -12,14 +12,14 @@ import java.util.Map;
 public class EnvUtils {
     public static boolean fileInEnv(String fileName){
         Map<String, String> envMap = System.getenv();
-        String path = envMap.get("PATH");
-        if (TextUtils.isEmpty(path)) {
+        String pathValue = envMap.get("PATH");
+        if (TextUtils.isEmpty(pathValue)) {
             return false;
         }
-        String[] paths = path.split(":");
-        for (String suDir : paths) {
-            String suPath = suDir + File.separator + fileName;
-            File file = new File(suPath);
+        String[] paths = pathValue.split(":");
+        for (String path : paths) {
+            String fullPath = path + File.separator + fileName;
+            File file = new File(fullPath);
             if (file.exists()) {
                 return true;
             }
