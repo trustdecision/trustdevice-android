@@ -2,9 +2,10 @@ package cn.tongdun.mobrisk.core.collectors;
 
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.text.TextUtils;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -21,15 +22,19 @@ public class SensorsInfoCollector {
     }
 
     public String getSensorList() {
+        JSONArray sensorArray = new JSONArray();
         try {
-            List<String> sensorInfos = new ArrayList<>();
             List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-            for (Sensor sensor : sensorList) {
-                sensorInfos.add(sensor.getName() + ":" + sensor.getVendor());
+            for (int i = 0; i < sensorList.size(); i++) {
+                Sensor sensor = sensorList.get(i);
+                JSONObject sensorInfo = new JSONObject();
+                sensorInfo.put("name", sensor.getName());
+                sensorInfo.put("vendor", sensor.getVendor());
+                sensorInfo.put("type", sensor.getType());
+                sensorArray.put(i, sensorInfo);
             }
-            return TextUtils.join(",", sensorInfos);
         } catch (Exception ignored) {
         }
-        return "";
+        return sensorArray.toString();
     }
 }

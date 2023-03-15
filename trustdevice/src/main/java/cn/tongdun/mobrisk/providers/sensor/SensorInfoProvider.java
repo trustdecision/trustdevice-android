@@ -1,13 +1,12 @@
 package cn.tongdun.mobrisk.providers.sensor;
 
-import android.util.Pair;
+import android.text.TextUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 import cn.tongdun.mobrisk.core.utils.Constants;
-import cn.tongdun.mobrisk.providers.InfoProvider;
 
 /**
  * @description: Sensor info provider
@@ -15,7 +14,7 @@ import cn.tongdun.mobrisk.providers.InfoProvider;
  * @date: 2022/12/6
  */
 @Deprecated(since = "pro no such class")
-public class SensorInfoProvider{
+public class SensorInfoProvider {
     private final JSONObject mDeviceInfo;
 
     public SensorInfoProvider(JSONObject deviceInfo) {
@@ -26,7 +25,20 @@ public class SensorInfoProvider{
         if (mDeviceInfo == null) {
             return 0;
         }
-        return mDeviceInfo.optString(Constants.KEY_SENSORS_INFO).split(",").length;
+        String sensorInfo = getSensorInfo();
+        if (TextUtils.isEmpty(sensorInfo)) {
+            return 0;
+        }
+        JSONArray sensorArray = null;
+        try {
+            sensorArray = new JSONArray(sensorInfo);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (sensorArray == null) {
+            return 0;
+        }
+        return sensorArray.length();
     }
 
     public String getSensorInfo() {
