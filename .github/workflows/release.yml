@@ -84,7 +84,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./app/build/outputs/apk/release/TrustDevice-release-1.0.0.apk
-          asset_name: TrustDevice-release-1.0.0.apk
+          asset_path: ./app/build/outputs/apk/release/TrustDevice-release-${{ env.RELEASE_NAME }}.apk
+          asset_name: TrustDevice-release-${{ env.RELEASE_NAME }}.apk
           # Common MIME types:https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
           asset_content_type: application/zip
