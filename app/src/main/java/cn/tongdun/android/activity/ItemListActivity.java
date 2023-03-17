@@ -1,13 +1,11 @@
 package cn.tongdun.android.activity;
 
-import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.trustdevice.android.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,8 @@ import butterknife.OnClick;
 import cn.tongdun.android.adapter.AppListRecyclerViewAdapter;
 import cn.tongdun.android.base.BaseActivity;
 import cn.tongdun.android.beans.AppItemData;
+import cn.tongdun.mobrisk.TDRisk;
+import cn.tongdun.mobrisk.providers.sensor.SensorInfoProvider;
 
 public class ItemListActivity extends BaseActivity {
 
@@ -54,10 +58,11 @@ public class ItemListActivity extends BaseActivity {
     @Override
     protected void initData() {
         mType = getIntent().getIntExtra("type", -1);
+        JSONObject deviceInfo = TDRisk.getBlackbox();
         if (mType == 0) {
             loadInstalledAppList(mShowSystemApp);
         } else if (mType == 1) {
-            loadSensorList();
+            loadSensorList(deviceInfo);
         }
     }
 
@@ -126,16 +131,29 @@ public class ItemListActivity extends BaseActivity {
         return isSysApp || isSysUpd;
     }
 
-    private void loadSensorList() {
+    private void loadSensorList(JSONObject deviceInfo) {
 
-        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        List<Sensor> sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL);
-        for (Sensor sensor : sensorList) {
-            Drawable icon = ContextCompat.getDrawable(this, getIconByType(sensor.getType()));
-            String name = sensor.getName();
-            String vendor = sensor.getVendor();
-            String version = String.valueOf(sensor.getVersion());
-            mItemData.add(new AppItemData(icon, name, vendor, version));
+        SensorInfoProvider sensorInfoProvider = new SensorInfoProvider(deviceInfo);
+        String sensorInfo = sensorInfoProvider.getSensorInfo();
+        if (TextUtils.isEmpty(sensorInfo)) {
+            return;
+        }
+        JSONArray sensorArray = null;
+        try {
+            sensorArray = new JSONArray(sensorInfo);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (sensorArray == null) {
+            return;
+        }
+        for (int i = 0; i < sensorArray.length(); i++) {
+            JSONObject sensor = sensorArray.optJSONObject(i);
+            int type = sensor.optInt("type");
+            Drawable icon = ContextCompat.getDrawable(this, getIconByType(type));
+            String name = "name: " + sensor.optString("name");
+            String vendor = "vendor: " + sensor.optString("vendor");
+            mItemData.add(new AppItemData(icon, name, vendor, typeToString(type)));
         }
     }
 
@@ -198,4 +216,62 @@ public class ItemListActivity extends BaseActivity {
         }
     }
 
+    private String typeToString(int sensorType) {
+        switch (sensorType) {
+            case 1:
+            case 10:
+            case 35:
+                return "accelerometer";
+            case 2:
+            case 14:
+                return "magnetic_field";
+            case 3:
+            case 11:
+            case 15:
+            case 20:
+            case 27:
+                return "orientation";
+            case 4:
+            case 16:
+                return "gyroscope";
+            case 5:
+                return "light";
+            case 6:
+                return "pressure";
+            case 7:
+            case 13:
+                return "temperature";
+            case 8:
+                return "proximity";
+            case 9:
+                return "gravity";
+            case 12:
+                return "humidity";
+            case 17:
+            case 30:
+                return "motion";
+            case 18:
+            case 19:
+                return "step";
+            case 21:
+            case 31:
+                return "heartrate";
+            case 22:
+            case 26:
+                return "tilt";
+            case 23:
+            case 24:
+            case 25:
+            case 28:
+            case 29:
+            case 32:
+            case 33:
+            case 34:
+                return "unknown";
+            case 36:
+                return "hinge";
+            default:
+                return "private";
+        }
+    }
 }
