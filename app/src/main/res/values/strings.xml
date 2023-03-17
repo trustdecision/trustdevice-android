@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrustDevice</string>
+    <string name="app_name">TrustDevice Fingerprint</string>
     <string name="device_id_title">Your Device ID</string>
     <string name="android_id_title">Android ID</string>
     <string name="risk_labels_title">Risk Labels</string>

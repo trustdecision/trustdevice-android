@@ -18,7 +18,7 @@
         android:theme="@style/Theme.TrustDeviceAndroid"
         tools:targetApi="31">
         <activity
-            android:name="cn.tongdun.android.activity.MainActivity"
+            android:name="cn.tongdun.android.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +32,7 @@
         </activity>
 
         <activity android:name="cn.tongdun.android.activity.ItemListActivity" />
+        <activity android:name="cn.tongdun.android.activity.MainActivity" />
     </application>
 
 </manifest>

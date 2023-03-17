@@ -42,6 +42,7 @@ android {
 dependencies {
     // implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
     implementation project(path: ':trustdevice')
+    implementation 'com.tencent:mmkv:1.2.15'
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'androidx.appcompat:appcompat:1.5.1'
