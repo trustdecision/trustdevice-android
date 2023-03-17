@@ -54,6 +54,10 @@ jobs:
       - name: Set release name
         run: echo RELEASE_NAME=${GITHUB_REF} >> $GITHUB_ENV
 
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -84,7 +88,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./app/build/outputs/apk/release/TrustDevice-release-${{ env.RELEASE_NAME }}.apk
-          asset_name: TrustDevice-release-${{ env.RELEASE_NAME }}.apk
+          asset_path: ./app/build/outputs/apk/release/TrustDevice-release-${{ steps.get_version.outputs.VERSION }}.apk
+          asset_name: TrustDevice-release-${{ steps.get_version.outputs.VERSION }}.apk
           # Common MIME types:https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
           asset_content_type: application/zip
