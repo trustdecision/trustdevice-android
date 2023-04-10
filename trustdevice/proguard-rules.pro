@@ -30,3 +30,7 @@
     public *;
 }
 -keep interface cn.tongdun.mobrisk.TDRiskCallback {*;}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+ }

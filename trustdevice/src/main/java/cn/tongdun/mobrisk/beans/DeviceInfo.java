@@ -31,7 +31,7 @@ public class DeviceInfo {
     private String cpuHardware;
     private String coresCount;
     private String abiType;
-    private boolean debug;
+    private int debug;
     private boolean root;
     private boolean xposed;
     private boolean magisk;
@@ -145,7 +145,7 @@ public class DeviceInfo {
         this.abiType = abiType;
     }
 
-    public void setDebug(boolean debug) {
+    public void setDebug(int debug) {
         this.debug = debug;
     }
 
