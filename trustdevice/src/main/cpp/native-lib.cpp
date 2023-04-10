@@ -3,16 +3,9 @@
 
 extern "C" {
 
-jobject entrance(JNIEnv *env, jclass clazz, jint type, jobject args) {
-    if (type == 0) {
-        return detection_debug(env);
-    }
-    return NULL;
-}
-
 // Define JNI methods to be registered
 static JNINativeMethod jniMethods[] = {
-        {"callNative", "(ILjava/lang/Object;)Ljava/lang/Object;", (void *) entrance},
+        {"detectDebug", "()I", (void *) detect_debug},
 };
 
 // Define JNI library registration function

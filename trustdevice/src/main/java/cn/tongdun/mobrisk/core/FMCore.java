@@ -87,7 +87,6 @@ public class FMCore {
             collectorSettingInfo();
             collectorSensorInfo();
             collectorPackageListInfo();
-            JNIHelper.callNative(0,null);
             countDownLatch.countDown();
             if (mCallback !=null){
                 mCallback.onEvent(getDeviceInfo());

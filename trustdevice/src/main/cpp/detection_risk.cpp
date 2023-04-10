@@ -1,5 +1,5 @@
 //
-// Created by 吴祖昌 on 2023/4/10.
+// Created by zuchangwu on 2023/4/10.
 //
 
 #include "detection_risk.h"
@@ -47,7 +47,7 @@ extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
     return false;
 }
 
-extern "C" JNIEXPORT jobject JNICALL detection_debug(JNIEnv *env) {
+extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jclass clazz) {
     int result = 0;
     if (detectTracePid()) {
         result |= 0x1 << 1;
@@ -55,9 +55,5 @@ extern "C" JNIEXPORT jobject JNICALL detection_debug(JNIEnv *env) {
     if (detectTaskTracerPid()) {
         result |= 0x1 << 2;
     }
-    jclass integer_class = env->FindClass("java/lang/Integer");
-    jmethodID integer_construct = env->GetMethodID(integer_class, "<init>", "(I)V");
-    jobject ret = env->NewObject(integer_class, integer_construct, result);
-    env->DeleteLocalRef(integer_class);
-    return ret;
+    return static_cast<jint>(result);;
 }
