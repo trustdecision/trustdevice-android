@@ -27,10 +27,21 @@ android {
         minSdk 21
         targetSdk 33
 
+        externalNativeBuild{
+            cmake {
+                abiFilters 'arm64-v8a','armeabi-v7a','x86'
+            }
+        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+            version '3.22.1'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true

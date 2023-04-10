@@ -67,4 +67,8 @@ public class Constants {
     public static final String MAGISK_MOUNTS_PATH = "/proc/self/mounts";
     public static final String MAGISK_MOUNT_INFO_PATH = "/proc/self/mountinfo";
     public static final String MAGISK_MOUNT_STATS_PATH = "/proc/self/mountstats";
+
+    public  static class JniCode{
+        public static final int DEBUG = 0;
+    }
 }

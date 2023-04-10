@@ -34,7 +34,8 @@ public class RiskInfoProvider {
         if (mDeviceInfo == null) {
             return false;
         }
-        return mDeviceInfo.optBoolean(Constants.KEY_DEBUG);
+        int debug = mDeviceInfo.optInt(Constants.KEY_DEBUG);
+        return debug > 0;
     }
 
     private boolean getMultiple() {

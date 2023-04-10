@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import cn.tongdun.mobrisk.core.utils.JNIHelper;
 import cn.tongdun.mobrisk.TDRiskCallback;
 import cn.tongdun.mobrisk.TDRiskOption;
 import cn.tongdun.mobrisk.beans.DeviceInfo;
@@ -35,6 +36,12 @@ import cn.tongdun.mobrisk.core.utils.LogUtils;
 
 public class FMCore {
 
+    static {
+        try {
+            System.loadLibrary("trustdevice");
+        } catch (Exception ignored) {
+        }
+    }
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final CountDownLatch countDownLatch = new CountDownLatch(1);
     private Context mContext;
@@ -80,6 +87,7 @@ public class FMCore {
             collectorSettingInfo();
             collectorSensorInfo();
             collectorPackageListInfo();
+            JNIHelper.callNative(0,null);
             countDownLatch.countDown();
             if (mCallback !=null){
                 mCallback.onEvent(getDeviceInfo());
