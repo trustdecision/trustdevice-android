@@ -6,5 +6,5 @@ package cn.tongdun.mobrisk.core.utils;
  * @date: 2023/4/7
  */
 public class JNIHelper {
-    public native static Object callNative(int type, Object args);
+    public native static int detectDebug();
 }
