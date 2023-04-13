@@ -241,6 +241,108 @@ Try the library features in the [TrustDevice Android Demo App](https://github.co
 | Supported System Versions | Android5.0+ ( API 21+ ) |
 | Supported Architecture    | armeabi-v7a, arm64-v8a, x86 |
 
+## TrustDevice Pro VS Others
+<table>
+    <tr align="center">
+        <th>Type</th><th>Scene</th><th>Result</th><th>TrusDevice Pro</th><th>Fingerprint</th><th>Seon</th>
+    </tr>
+    <tr align="center">
+        <td rowspan="2">Device Fingerprint Compatibility</td><td>Support Hongmeng system, including HarmonyOS 3.0, etc.</td><td>Able to collect device info and generate device ID</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Android 4.0 and above, including Android 14, etc.</td><td>Able to collect device info and generate device ID</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td rowspan="2">Device fingerprint uniqueness</td><td>Different Apps (with different package names) on the same device</td><td>Device fingerprint/ID matches</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>The same app on two unique devices (including the case of the same device model and the same system version)</td><td>Device fingerprint/ID should not match. Each device to have its own unique device fingeprint/ID</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td rowspan="7">Device Fingerprint Stability</td><td>Uninstall and reinstall of app</td><td>Device fingerprints/ID are consistent before and after reinstallation</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Clear all app data</td><td>Device fingerprints/ID are consistent before and after clearing all app data</td><td>✅</td><td>✅</td><td>✅</td>
+    <tr align="center">
+        <td>Disable all app permissions except network permissions and clear app data</td><td>Device fingerprints/ID are consistent before and after disabling all permissions</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Modify the common information of the device system (brand, model, IMEI number, MAC address, etc.) through the device modification tool</td><td>Device fingerprint/ID still matches with before modification</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Running same app in two instances using virtualization on the same device (i.e. using parallel space or dual space tools)</td><td>Device fingerprint/ID still matches between both app instances</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Android system upgrade</td><td>Device fingerprint/ID are consistent before and after system upgrade</td><td>✅</td><td>✅</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Factory reset (including Android 10 and above, etc.)</td><td>The device fingerprints are the same before and after the device is restored to factory settings</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td rowspan="18">Device Fingerprint Risk Identification</td><td>Secondary packaging</td><td>Ability to identify secondary packaged unofficial apps</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>Replay attack</td><td>Ability to identify replay attacks</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>Suspected risky ROM</td><td>Ability to identify suspected risky ROMs</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>Device location information has been tampered with</td><td>Ability to identify tampering of location information</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device does not have a SIM card inserted</td><td>Can identify whether the device is inserted with a SIM card</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses an HTTP proxy</td><td>Can identify HTTP proxy risks</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses a VPN proxy</td><td>Can identify VPN proxy risks</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device is Rooted</td><td>Ability to identify root risks</td><td>✅</td><td>❌</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>The device is an Android emulator</td><td>Can recognize emulator/simulator</td><td>✅</td><td>❌</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>The device is an Android cloud emulator</td><td>Ability to recognize cloud emulators</td><td>✅</td><td>❌</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>The device is an Android cloud real device</td><td>Can identify cloud real device</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>Devices use system virtualization tools (i.e. parallel space, dual space, etc)</td><td>Able to identify system virtualization tools</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses the virtualization tool to launch multiple instances of same application</td><td>Recognize multiple instances of same applications on same device opened via virtualization tool</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses the device modification tool to modify the device parameter information</td><td>Ability to identify mainstream modification tools</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses scripting tools</td><td>Can identify mainstream scripting tools</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses the group control tool (tools to control multiple devices via a single terminal - device farm/device group)</td><td>Can identify mainstream group control tools</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device is in Android ADB debugging state</td><td>Able to recognize Android ADB debugging</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>The device uses offerwall software (ad scamming software)</td><td>Ability to identify devices using offerwall software</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td rowspan="3">Security and Stability</td><td>Code Protection</td><td>The device fingerprint SDK and JS have code protection mechanisms (such as VMP), which effectively resist black hat cracking attempts to manipulate code logic and falsify data</td><td>✅ (OLLVM, VMP)</td><td>❌</td><td>❌</td>
+    </tr>
+    <tr align="center">
+        <td>Downgrade</td><td>Intercepting and sending collection requests in the Android environment can still generate device fingerprints normally</td><td>✅</td><td>❌</td><td>✅</td>
+    </tr>
+    <tr align="center">
+        <td>Anti packet capture</td><td>Android has the ability to prevent packet capture</td><td>✅</td><td>❌</td><td>❌</td>
+    </tr>
+</table>
+
 ## License
 
 This library is MIT licensed. Copyright trustdecision, Inc. 2022.
