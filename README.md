@@ -250,7 +250,7 @@ Try the library features in the [TrustDevice Android Demo App](https://github.co
         <td rowspan="2">Device Fingerprint Compatibility</td><td>Support Hongmeng system, including HarmonyOS 3.0, etc.</td><td>Able to collect device info and generate device ID</td><td>✅</td><td>✅</td><td>✅</td>
     </tr>
     <tr align="center">
-        <td>Android 4.0 and above, including Android 14, etc.</td><td>Able to collect device info and generate device ID</td><td>✅</td><td>✅</td><td>✅</td>
+        <td>Android 5.0 and above, including Android 14, etc.</td><td>Able to collect device info and generate device ID</td><td>✅</td><td>✅</td><td>✅</td>
     </tr>
     <tr align="center">
         <td rowspan="2">Device fingerprint uniqueness</td><td>Different Apps (with different package names) on the same device</td><td>Device fingerprint/ID matches</td><td>✅</td><td>✅</td><td>✅</td>
