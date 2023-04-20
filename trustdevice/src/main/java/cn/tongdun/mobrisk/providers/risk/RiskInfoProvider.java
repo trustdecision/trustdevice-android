@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.tongdun.mobrisk.core.utils.Constants;
-import cn.tongdun.mobrisk.providers.InfoProvider;
-
 /**
  * @description: Risk info Provider
  * @author: wuzuchang
@@ -59,6 +57,13 @@ public class RiskInfoProvider {
         return mDeviceInfo.optBoolean(Constants.KEY_MAGISK);
     }
 
+    private boolean getHookStatus() {
+        if (mDeviceInfo == null) {
+            return false;
+        }
+        return mDeviceInfo.optBoolean(Constants.KEY_HOOK);
+    }
+
     public String getRiskLabels() {
         List<String> riskLabels = new ArrayList<>();
         if (getRoot()) {
@@ -76,6 +81,9 @@ public class RiskInfoProvider {
         if (getMagiskStatus()) {
             riskLabels.add("Magisk");
         }
-        return TextUtils.join(",", riskLabels);
+        if (getHookStatus()) {
+            riskLabels.add("Hook");
+        }
+        return TextUtils.join(", ", riskLabels);
     }
 }
