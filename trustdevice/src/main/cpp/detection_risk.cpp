@@ -60,13 +60,10 @@ extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jclass clazz) {
     return static_cast<jint>(result);
 }
 
-extern "C" JNIEXPORT char *JNICALL detect_frida() {
+extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t max_length) {
     char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
                                  "access", "ptrace", "__system_property_get"};
     char *libc_so_path;
-    const size_t max_length = 512;
-    char *hook_method = new char[max_length];
-    *hook_method = '\0';
 #ifdef __LP64__
     libc_so_path = "/system/lib64/libc.so";
 #else
@@ -74,7 +71,7 @@ extern "C" JNIEXPORT char *JNICALL detect_frida() {
 #endif
     void *handler = dlopen(libc_so_path, RTLD_NOW);
     if (!handler) {
-        return nullptr;
+        return 0;
     }
     for (char *method_name: libc_method_names) {
         void *method_sym = dlsym(handler, method_name);
@@ -107,12 +104,12 @@ extern "C" JNIEXPORT char *JNICALL detect_frida() {
         hook_method[str_len - 1] = '\0';
     }
 //    LOGD("frida hook method = %s\n", hook_method);
-    return hook_method;
+    return str_len;
 }
 
 extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jclass clazz) {
-    char *frida = detect_frida();
-    jstring ret = env->NewStringUTF(frida);
-    delete[] frida;
-    return ret;
+    const size_t max_length = 512;
+    char frida_hook_method[max_length] = {};
+    detect_frida(frida_hook_method, max_length);
+    return env->NewStringUTF(frida_hook_method);
 }
