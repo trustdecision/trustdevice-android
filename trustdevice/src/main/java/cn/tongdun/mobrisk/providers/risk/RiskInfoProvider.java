@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.tongdun.mobrisk.core.utils.Constants;
-import cn.tongdun.mobrisk.core.utils.LogUtils;
-import cn.tongdun.mobrisk.providers.InfoProvider;
-
 /**
  * @description: Risk info Provider
  * @author: wuzuchang
