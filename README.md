@@ -2,7 +2,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="resources/logo_light.png" />
       <source media="(prefers-color-scheme: light)" srcset="resources/logo_dark.png" />
-      <img src="resources/logo_dark.png" alt="TrustDevice logo" width="729px" height="67px" />
+      <img src="resources/logo_dark.png" alt="TrustDevice logo" width="729px" />
     </picture>
 </p>
 <p align="center">
