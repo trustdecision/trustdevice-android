@@ -6,6 +6,7 @@ extern "C" {
 // Define JNI methods to be registered
 static JNINativeMethod jniMethods[] = {
         {"detectDebug", "()I", (void *) detect_debug},
+        {"detectHook", "()Ljava/lang/String;", (void *) detect_hook},
 };
 
 // Define JNI library registration function

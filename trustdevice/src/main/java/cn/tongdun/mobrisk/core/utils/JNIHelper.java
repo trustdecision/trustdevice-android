@@ -7,4 +7,5 @@ package cn.tongdun.mobrisk.core.utils;
  */
 public class JNIHelper {
     public native static int detectDebug();
+    public native static String detectHook();
 }

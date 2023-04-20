@@ -1,5 +1,7 @@
 package cn.tongdun.mobrisk.core.utils;
 
+import android.text.TextUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,6 +53,7 @@ public class DeviceInfoUtils {
             risk.put(Constants.KEY_MULTIPLE, getMultiple(data));
             risk.put(Constants.KEY_XPOSED, data.opt(Constants.KEY_XPOSED));
             risk.put(Constants.KEY_MAGISK, data.opt(Constants.KEY_MAGISK));
+            risk.put(Constants.KEY_HOOK, getHookStatus(data));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -81,5 +84,14 @@ public class DeviceInfoUtils {
             return "true";
         }
         return "false";
+    }
+
+    private static String getHookStatus(JSONObject data) {
+
+        if (data == null) {
+            return "false";
+        }
+        return TextUtils.isEmpty(data.optString(Constants.KEY_HOOK)) ? "false" : "true";
+
     }
 }
