@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import cn.tongdun.mobrisk.core.collectors.EmulatorCollector;
 import cn.tongdun.mobrisk.core.collectors.HookCollector;
 import cn.tongdun.mobrisk.TDRiskCallback;
 import cn.tongdun.mobrisk.TDRiskOption;
@@ -78,6 +79,7 @@ public class FMCore {
             collectorRoot();
             collectorXposed();
             collectorMagisk();
+            collectorEmulator();
             collectorHook();
             collectorBuildInfo();
             collectorDeviceBaseInfo();
@@ -127,6 +129,11 @@ public class FMCore {
     private void collectorHook() {
         HookCollector hookCollector = new HookCollector();
         mDeviceInfo.setHook(hookCollector.detectHook());
+    }
+
+    private void collectorEmulator(){
+        EmulatorCollector emulatorCollector = new EmulatorCollector();
+        mDeviceInfo.setEmulator(emulatorCollector.detectEmulator());
     }
 
     private void collectorBuildInfo() {

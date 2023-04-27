@@ -64,6 +64,13 @@ public class RiskInfoProvider {
         return mDeviceInfo.optBoolean(Constants.KEY_HOOK);
     }
 
+    private boolean getEmulatorStatus(){
+        if (mDeviceInfo == null) {
+            return false;
+        }
+        return mDeviceInfo.optBoolean(Constants.KEY_EMULATOR);
+    }
+
     public String getRiskLabels() {
         List<String> riskLabels = new ArrayList<>();
         if (getRoot()) {
@@ -83,6 +90,9 @@ public class RiskInfoProvider {
         }
         if (getHookStatus()) {
             riskLabels.add("Hook");
+        }
+        if (getEmulatorStatus()) {
+            riskLabels.add("Emulator");
         }
         return TextUtils.join(", ", riskLabels);
     }
