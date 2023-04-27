@@ -54,6 +54,7 @@ public class DeviceInfoUtils {
             risk.put(Constants.KEY_XPOSED, data.opt(Constants.KEY_XPOSED));
             risk.put(Constants.KEY_MAGISK, data.opt(Constants.KEY_MAGISK));
             risk.put(Constants.KEY_HOOK, getHookStatus(data));
+            risk.put(Constants.KEY_EMULATOR, getEmulatorStatus(data));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -93,5 +94,13 @@ public class DeviceInfoUtils {
         }
         return TextUtils.isEmpty(data.optString(Constants.KEY_HOOK)) ? "false" : "true";
 
+    }
+
+    private static String getEmulatorStatus(JSONObject data) {
+
+        if (data == null) {
+            return "false";
+        }
+        return data.optString(Constants.KEY_EMULATOR);
     }
 }

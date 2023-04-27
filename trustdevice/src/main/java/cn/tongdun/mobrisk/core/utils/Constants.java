@@ -38,6 +38,7 @@ public class Constants {
     public static final String KEY_ROOT = "root";
     public static final String KEY_XPOSED = "xposed";
     public static final String KEY_MAGISK = "magisk";
+    public static final String KEY_EMULATOR = "emulator";
     public static final String KEY_HOOK = "hook";
     public static final String KEY_COUNTRY = "country";
     public static final String KEY_LANGUAGE = "language";

@@ -35,6 +35,7 @@ public class DeviceInfo {
     private boolean root;
     private boolean xposed;
     private boolean magisk;
+    private boolean emulator;
     private String hook;
     private String country;
     private String language;
@@ -160,6 +161,10 @@ public class DeviceInfo {
 
     public void setMagiskStatus(boolean magiskStatus) {
         this.magisk = magiskStatus;
+    }
+
+    public void setEmulator(boolean emulator) {
+        this.emulator = emulator;
     }
 
     public void setHook(String hook) {
