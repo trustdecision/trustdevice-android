@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
     id 'signing'
 }
@@ -23,6 +24,7 @@ android {
     namespace 'cn.tongdun.mobrisk'
     compileSdk 33
 
+    ndkVersion "25.2.9519653"
     defaultConfig {
         minSdk 21
         targetSdk 33
@@ -48,6 +50,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 

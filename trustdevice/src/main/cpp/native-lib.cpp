@@ -18,7 +18,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
         return result;
     }
 
-    jclass clazz = env->FindClass("cn/tongdun/mobrisk/core/utils/JNIHelper");
+    jclass clazz = env->FindClass("cn/tongdun/mobrisk/core/tools/JNIHelper");
     if (clazz == nullptr) {
         return result;
     }
