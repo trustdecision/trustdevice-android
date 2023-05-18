@@ -1,48 +1,63 @@
 package cn.tongdun.mobrisk.core.tools
 
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
+
 /**
  * @description:
  * @author: wuzuchang
  * @date: 2023/5/15
  */
 
+fun String.hash(algorithm: String): String {
+    return executeSafe({
+        val md = MessageDigest.getInstance(algorithm)
+        md.update(this.toByteArray(StandardCharsets.UTF_8))
+        md.digest().toHexString()
+    }, "")
+}
 
-object StringUtils {
-
-    fun splitNonRegex(input: String, delim: String?): List<String> {
-        var inputString = input
-        val list: MutableList<String> = ArrayList()
-        if (inputString.isEmpty()) {
-            return list
-        }
-        if (delim == null || delim.isEmpty()) {
-            list.add(inputString)
-            return list
-        }
-        if (inputString == delim) {
-            return list
-        }
-        while (true) {
-            val index: Int = inputString.indexOf(delim)
-            if (index == -1) {
-                if (inputString.isNotEmpty()) {
-                    list.add(inputString)
-                }
-                return list
-            }
-            if (index != 0) {
-                list.add(inputString.substring(0, index))
-            }
-            inputString = inputString.substring(index + delim.length)
-        }
+fun String.splitNonRegex(delimiter: String): List<String> {
+    val list: MutableList<String> = mutableListOf()
+    var input = this
+    if (input.isEmpty()) {
+        return list
     }
-
-    fun byteToHexString(data: ByteArray): String {
-        val hex = StringBuilder()
-        // Iterating through each byte in the array
-        for (i in data) {
-            hex.append(String.format("%02X", i))
-        }
-        return hex.toString()
+    if (delimiter.isEmpty()) {
+        list.add(input)
+        return list
     }
+    if (input == delimiter) {
+        return list
+    }
+    while (true) {
+        val index: Int = input.indexOf(delimiter)
+        if (index == -1) {
+            if (input.isNotEmpty()) {
+                list.add(input)
+            }
+            return list
+        }
+        if (index != 0) {
+            list.add(input.substring(0, index))
+        }
+        input = input.substring(index + delimiter.length)
+    }
+}
+
+fun ByteArray.hash(algorithm: String): String {
+    return executeSafe({
+        val md = MessageDigest.getInstance(algorithm)
+        md.update(this)
+        md.digest().toHexString()
+    }, "")
+}
+
+fun ByteArray.toHexString(): String {
+    val hex = StringBuilder()
+    // Iterating through each byte in the array
+    for (i in this) {
+        hex.append(String.format("%02X", i))
+    }
+    return hex.toString()
 }
