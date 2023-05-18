@@ -1,5 +1,6 @@
 #include <jni.h>
 #include "detection_risk.h"
+#include "utils.h"
 
 extern "C" {
 
@@ -7,6 +8,7 @@ extern "C" {
 static JNINativeMethod jniMethods[] = {
         {"detectDebug", "()I", (void *) detect_debug},
         {"detectHook", "()Ljava/lang/String;", (void *) detect_hook},
+        {"getProperty", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", (void *) get_property},
 };
 
 // Define JNI library registration function

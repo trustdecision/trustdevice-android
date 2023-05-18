@@ -1,6 +1,5 @@
 package cn.tongdun.mobrisk.core.tools
 
-import android.text.TextUtils
 import cn.tongdun.mobrisk.beans.DeviceInfo
 import org.json.JSONObject
 import java.io.File
@@ -35,11 +34,11 @@ object DeviceInfoUtils {
     private fun deviceRisk(data: JSONObject): JSONObject {
         val risk = JSONObject()
         executeSafe {
-            risk.put(Constants.KEY_ROOT, data.opt(Constants.KEY_ROOT))
-            risk.put(Constants.KEY_DEBUG, data.opt(Constants.KEY_DEBUG))
+            risk.put(Constants.KEY_ROOT, data.optString(Constants.KEY_ROOT))
+            risk.put(Constants.KEY_DEBUG, (data.optInt(Constants.KEY_DEBUG)>0).toString())
             risk.put(Constants.KEY_MULTIPLE, getMultiple(data))
-            risk.put(Constants.KEY_XPOSED, data.opt(Constants.KEY_XPOSED))
-            risk.put(Constants.KEY_MAGISK, data.opt(Constants.KEY_MAGISK))
+            risk.put(Constants.KEY_XPOSED, data.optString(Constants.KEY_XPOSED))
+            risk.put(Constants.KEY_MAGISK, data.optString(Constants.KEY_MAGISK))
             risk.put(Constants.KEY_HOOK, getHookStatus(data))
             risk.put(Constants.KEY_EMULATOR, getEmulatorStatus(data))
         }
@@ -69,16 +68,11 @@ object DeviceInfoUtils {
         } else "false"
     }
 
-    private fun getHookStatus(data: JSONObject?): String? {
-        if (data == null) {
-            return "false"
-        }
-        return if (TextUtils.isEmpty(data.optString(Constants.KEY_HOOK))) "false" else "true"
+    private fun getHookStatus(data: JSONObject): String {
+        return if (data.optString(Constants.KEY_HOOK).isEmpty()) "false" else "true"
     }
 
-    private fun getEmulatorStatus(data: JSONObject?): String? {
-        return if (data == null) {
-            "false"
-        } else data.optString(Constants.KEY_EMULATOR)
+    private fun getEmulatorStatus(data: JSONObject): String {
+        return data.optString(Constants.KEY_EMULATOR)
     }
 }

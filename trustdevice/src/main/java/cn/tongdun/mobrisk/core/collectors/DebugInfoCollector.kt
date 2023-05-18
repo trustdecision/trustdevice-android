@@ -2,6 +2,7 @@ package cn.tongdun.mobrisk.core.collectors
 
 import android.os.Debug
 import cn.tongdun.mobrisk.core.tools.JNIHelper
+import cn.tongdun.mobrisk.core.tools.executeSafe
 
 /**
  * @description:Debug info
@@ -18,7 +19,7 @@ class DebugInfoCollector : DebugInfoInterface {
         if (Debug.isDebuggerConnected()) {
             result = result or 0x1
         }
-        val ret: Int = JNIHelper.detectDebug()
+        val ret: Int = executeSafe({ JNIHelper.detectDebug() }, 0)
         result = result or ret
         return result
     }

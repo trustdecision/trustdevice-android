@@ -7,7 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
-import cn.tongdun.mobrisk.core.tools.SystemPropertyUtils
+import cn.tongdun.mobrisk.core.tools.JNIHelper
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import cn.tongdun.mobrisk.core.tools.hash
 import java.util.*
@@ -39,13 +39,13 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
             androidId = getAndroidId()
         }
         if (!TextUtils.isEmpty(androidId)) {
-            return hash("SHA-256", androidId!!)
+            return androidId!!.hash("SHA-256")
         }
         if (gsfId == null) {
             gsfId = getGsfId()
         }
         if (!TextUtils.isEmpty(gsfId)) {
-            return hash("SHA-256", gsfId!!)
+            return gsfId!!.hash("SHA-256")
         }
         if (mediaDrmId != null) {
             mediaDrmId = getMediaDrmId()
@@ -53,7 +53,7 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
         if (!TextUtils.isEmpty(mediaDrmId)) {
             return mediaDrmId!!
         }
-        return hash("SHA-256", getVbMetaDigest() ?: "unknown")
+        return getVbMetaDigest().hash("SHA-256")
     }
 
     @SuppressLint("HardwareIds")
@@ -68,14 +68,14 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
 
     override fun getMediaDrmId(): String? {
         if (mediaDrmId !== null) {
-           return mediaDrmId
+            return mediaDrmId
         }
         var drm: MediaDrm? = null
         try {
             val uuid = UUID(-0x121074568629b532L, -0x5c37d8232ae2de13L)
             drm = MediaDrm(uuid)
             val bytes = drm.getPropertyByteArray(MediaDrm.PROPERTY_DEVICE_UNIQUE_ID)
-            mediaDrmId = hash("SHA-256", bytes)
+            mediaDrmId = bytes.hash("SHA-256")
         } catch (ignored: Throwable) {
         } finally {
             if (drm != null) {
@@ -111,5 +111,6 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
         return gsfId
     }
 
-    override fun getVbMetaDigest(): String = SystemPropertyUtils.getProperty("ro.boot.vbmeta.digest")
+    override fun getVbMetaDigest(): String =
+        executeSafe({ JNIHelper.getProperty("ro.boot.vbmeta.digest", "") }, "")
 }
