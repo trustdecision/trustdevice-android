@@ -9,13 +9,13 @@ package cn.tongdun.mobrisk.core.tools
 
 object StringUtils {
 
-    fun splitNonRegex(input: String, delim: String?): List<String> {
+    fun splitNonRegex(input: String, delim: String): List<String> {
         var inputString = input
         val list: MutableList<String> = ArrayList()
         if (inputString.isEmpty()) {
             return list
         }
-        if (delim == null || delim.isEmpty()) {
+        if (delim.isEmpty()) {
             list.add(inputString)
             return list
         }

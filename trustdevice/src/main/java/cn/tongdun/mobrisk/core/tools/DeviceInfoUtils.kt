@@ -1,6 +1,5 @@
 package cn.tongdun.mobrisk.core.tools
 
-import android.text.TextUtils
 import cn.tongdun.mobrisk.beans.DeviceInfo
 import org.json.JSONObject
 import java.io.File
@@ -69,16 +68,11 @@ object DeviceInfoUtils {
         } else "false"
     }
 
-    private fun getHookStatus(data: JSONObject?): String? {
-        if (data == null) {
-            return "false"
-        }
-        return if (TextUtils.isEmpty(data.optString(Constants.KEY_HOOK))) "false" else "true"
+    private fun getHookStatus(data: JSONObject): String {
+        return if (data.optString(Constants.KEY_HOOK).isEmpty()) "false" else "true"
     }
 
-    private fun getEmulatorStatus(data: JSONObject?): String? {
-        return if (data == null) {
-            "false"
-        } else data.optString(Constants.KEY_EMULATOR)
+    private fun getEmulatorStatus(data: JSONObject): String {
+        return data.optString(Constants.KEY_EMULATOR)
     }
 }
