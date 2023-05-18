@@ -8,4 +8,5 @@ package cn.tongdun.mobrisk.core.tools
 object JNIHelper {
     external fun detectDebug(): Int
     external fun detectHook(): String
+    external fun getProperty(key: String, defaultValue: String): String
 }

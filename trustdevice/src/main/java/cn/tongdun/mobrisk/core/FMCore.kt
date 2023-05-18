@@ -8,13 +8,12 @@ import cn.tongdun.mobrisk.TDRiskOption
 import cn.tongdun.mobrisk.beans.DeviceInfo
 import cn.tongdun.mobrisk.core.collectors.*
 import cn.tongdun.mobrisk.core.tools.DeviceInfoUtils
-import cn.tongdun.mobrisk.core.tools.SettingInfoCollector
+import cn.tongdun.mobrisk.core.collectors.SettingInfoCollector
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import org.json.JSONObject
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-
 
 class FMCore private constructor() {
 
@@ -22,6 +21,7 @@ class FMCore private constructor() {
         init {
             executeSafe { System.loadLibrary("trustdevice") }
         }
+
         val instance: FMCore by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             FMCore()
         }

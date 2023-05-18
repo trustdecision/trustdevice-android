@@ -1,7 +1,8 @@
-package cn.tongdun.mobrisk.core.tools
+package cn.tongdun.mobrisk.core.collectors
 
 import android.content.ContentResolver
 import android.provider.Settings
+import cn.tongdun.mobrisk.core.tools.executeSafe
 
 /**
  * @description:Setting Info

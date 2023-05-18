@@ -49,7 +49,7 @@ extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
     return false;
 }
 
-extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jclass clazz) {
+extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz) {
     int result = 0;
     if (detectTracePid()) {
         result |= 0x1 << 1;
@@ -107,7 +107,7 @@ extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t
     return str_len;
 }
 
-extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jclass clazz) {
+extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jobject clazz) {
     const size_t max_length = 512;
     char frida_hook_method[max_length] = {};
     detect_frida(frida_hook_method, max_length);

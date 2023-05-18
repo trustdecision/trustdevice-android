@@ -7,7 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
-import cn.tongdun.mobrisk.core.tools.SystemPropertyUtils
+import cn.tongdun.mobrisk.core.tools.JNIHelper
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import cn.tongdun.mobrisk.core.tools.hash
 import java.util.*
@@ -68,7 +68,7 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
 
     override fun getMediaDrmId(): String? {
         if (mediaDrmId !== null) {
-           return mediaDrmId
+            return mediaDrmId
         }
         var drm: MediaDrm? = null
         try {
@@ -111,5 +111,6 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
         return gsfId
     }
 
-    override fun getVbMetaDigest(): String = SystemPropertyUtils.getProperty("ro.boot.vbmeta.digest")
+    override fun getVbMetaDigest(): String =
+        executeSafe({ JNIHelper.getProperty("ro.boot.vbmeta.digest", "") }, "")
 }
