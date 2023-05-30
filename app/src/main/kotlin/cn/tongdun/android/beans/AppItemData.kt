@@ -7,6 +7,5 @@ data class AppItemData(
     val icon: Drawable?,
     val appName: String,
     val packageName: String,
-    val versionName: String
-) {
-}
+    val versionName: String?
+)
