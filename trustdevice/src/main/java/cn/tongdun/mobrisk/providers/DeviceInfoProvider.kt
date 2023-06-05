@@ -20,6 +20,7 @@ class DeviceInfoProvider(private val deviceJson: JSONObject) {
         deviceJson.optString(Constants.KEY_DEVICE_ID),
         deviceDetail.optString(Constants.KEY_ANDROID_ID),
         deviceDetail.optString(Constants.KEY_GSF_ID),
+        deviceDetail.optString(Constants.KEY_GAD_ID),
         deviceDetail.optString(Constants.KEY_MEDIA_DRM_ID),
         deviceDetail.optString(Constants.KEY_VB_META_DIGEST)
     )

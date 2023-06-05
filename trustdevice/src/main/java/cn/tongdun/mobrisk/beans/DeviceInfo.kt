@@ -10,6 +10,7 @@ class DeviceInfo {
     var gsfId: String? = null
     var mediaDrmId: String? = null
     var vbMetaDigest: String? = null
+    var googleAdId: String? = null
     var model: String? = null
     var manufacturer: String? = null
     var androidVersion: String? = null

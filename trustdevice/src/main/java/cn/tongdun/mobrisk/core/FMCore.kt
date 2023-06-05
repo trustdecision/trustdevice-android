@@ -9,6 +9,7 @@ import cn.tongdun.mobrisk.beans.DeviceInfo
 import cn.tongdun.mobrisk.core.collectors.*
 import cn.tongdun.mobrisk.core.tools.DeviceInfoUtils
 import cn.tongdun.mobrisk.core.collectors.SettingInfoCollector
+import cn.tongdun.mobrisk.core.tools.Logger
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import org.json.JSONObject
 import java.util.concurrent.CountDownLatch
@@ -68,6 +69,7 @@ class FMCore private constructor() {
         mDeviceInfo.gsfId = deviceIdCollector.getGsfId()
         mDeviceInfo.mediaDrmId = deviceIdCollector.getMediaDrmId()
         mDeviceInfo.vbMetaDigest = deviceIdCollector.getVbMetaDigest()
+        mDeviceInfo.googleAdId = deviceIdCollector.getGoogleAdid(mContext)
     }
 
     private fun collectorDebugInfo() {

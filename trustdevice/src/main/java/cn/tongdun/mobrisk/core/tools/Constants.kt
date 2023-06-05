@@ -11,6 +11,7 @@ object Constants {
     const val KEY_DEVICE_DETAIL = "device_detail"
     const val KEY_ANDROID_ID = "androidId"
     const val KEY_GSF_ID = "gsfId"
+    const val KEY_GAD_ID = "googleAdId"
     const val KEY_MEDIA_DRM_ID = "mediaDrmId"
     const val KEY_VB_META_DIGEST = "vbMetaDigest"
     const val KEY_MODEL = "model"
