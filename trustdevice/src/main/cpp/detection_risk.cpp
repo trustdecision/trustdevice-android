@@ -79,6 +79,10 @@ extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t
             continue;
         }
         auto *bytecode = reinterpret_cast<uintptr_t *>(method_sym);
+        int access = mem_read_access_by_maps(bytecode, 16);
+        if (access == 0) {
+            continue;
+        }
         operation_type operation = *bytecode;
         if (operation == trampoline_code) {
             size_t remaining_length = max_length - strlen(method_name);
@@ -92,6 +96,10 @@ extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t
     size_t td_method_len = sizeof(td_method_names) / sizeof(td_method_names[0]);
     for (size_t i = 0; i < td_method_len; ++i) {
         auto *bytecode = reinterpret_cast<uintptr_t *>(td_method_names[i]);
+        int access = mem_read_access_by_maps(bytecode, 16);
+        if (access == 0) {
+            continue;
+        }
         operation_type operation = *bytecode;
         if (operation == trampoline_code) {
             std::string str = std::to_string(i);
