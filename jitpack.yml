@@ -1,5 +1,7 @@
-jdk:
-  - openjdk11
+before_install:
+  - yes | sdkmanager "cmake;3.22.1"
+  - sdk install java 11.0.10-open
+  - sdk use java 11.0.10-open
 install:
    - ./gradlew clean
    - ./gradlew trustdevice:assembleRelease
