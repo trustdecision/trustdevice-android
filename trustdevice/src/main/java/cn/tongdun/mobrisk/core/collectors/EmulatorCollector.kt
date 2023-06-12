@@ -29,7 +29,17 @@ class EmulatorCollector : EmulatorInterface {
         "/system/bin/microvirt-prop",
         "/system/lib/libdroid4x.so",
         "/system/bin/windroyed",
-        "/system/bin/microvirtd"
+        "system/lib/libnoxspeedup.so",
+        "/system/bin/duosconfig",
+        "/system/etc/xxzs_prop.sh",
+        "/system/etc/mumu-configs/device-prop-configs/mumu.config",
+        "/system/priv-app/ldAppStore",
+        "system/bin/ldinit",
+        "/system/app/AntStore",
+        "vmos.prop",
+        "fstab.titan",
+        "x8.prop",
+        "/system/lib/libc_malloc_debug_qemu.so"
     )
 
     override fun detectEmulator(): Boolean {
@@ -54,6 +64,7 @@ class EmulatorCollector : EmulatorInterface {
             || Build.DEVICE.lowercase(Locale.getDefault()).contains("mumu")
             || Build.DEVICE.lowercase(Locale.getDefault()).contains("zerofltezc")
             || Build.FINGERPRINT.startsWith("generic")
+            || Build.FINGERPRINT.contains("vbox")
             || "vmos" == Build.MODEL
             || "duos" == Build.MODEL
             || "amiduos" == Build.MODEL
