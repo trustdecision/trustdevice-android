@@ -5,6 +5,9 @@
 #ifndef TRUSTDEVICE_ANDROID_UTILS_H
 #define TRUSTDEVICE_ANDROID_UTILS_H
 
+#include <jni.h>
+#include <string>
+
 jstring get_property(JNIEnv *env, jobject clazz, jstring _key, jstring _default_value);
 
 extern "C" JNIEXPORT int JNICALL mem_read_access_by_maps(void *read_addr, size_t len);

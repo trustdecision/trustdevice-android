@@ -6,14 +6,16 @@
 #define TRUSTDEVICE_ANDROID_DETECTION_RISK_H
 
 #include <jni.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <unistd.h>
+#include <fcntl.h>
+#include <dlfcn.h>
+#include "utils.h"
+#include "common/macro.h"
+#include "common/logger.h"
 
-#ifdef __LP64__
-typedef unsigned long long operation_type;
-static unsigned long trampoline_code = 0xd61f020058000050;
-#else
-typedef unsigned long operation_type;
-static unsigned long trampoline_code = 0x58000050;
-#endif
 jint detect_debug(JNIEnv *env, jobject clazz);
 jstring detect_hook(JNIEnv *env, jobject clazz);
 

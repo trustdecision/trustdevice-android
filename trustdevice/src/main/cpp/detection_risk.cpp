@@ -3,13 +3,6 @@
 //
 
 #include "detection_risk.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <unistd.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-#include "utils.h"
 
 int readTracePid(const char *file_path) {
     int tracerPid = 0;
@@ -111,6 +104,7 @@ size_t detect_frida(char *hook_method, const size_t max_length) {
     if (str_len > 0 && hook_method[str_len - 1] == ',') {
         hook_method[str_len - 1] = '\0';
     }
+    LOGD("hook methods: %s",hook_method);
     return str_len;
 }
 

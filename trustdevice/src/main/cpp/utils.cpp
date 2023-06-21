@@ -2,8 +2,6 @@
 // Created by zuchangwu on 2023/4/7.
 //
 
-#include <jni.h>
-#include <string>
 #include "utils.h"
 
 jstring get_property(JNIEnv *env, jobject clazz, jstring _key, jstring _default_value) {
