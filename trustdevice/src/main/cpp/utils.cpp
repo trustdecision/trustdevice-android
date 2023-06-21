@@ -18,9 +18,9 @@ jstring get_property(JNIEnv *env, jobject __unused, jstring _key, jstring _defau
  * Parse every step of the map, observe the permission part, it is no permission
  * 0: not accessible; 1: accessibles
  */
-extern "C" JNIEXPORT int JNICALL mem_read_access_by_maps(void *read_addr, size_t len) {
+bool mem_read_access_by_maps(void *read_addr, size_t len) {
     if(read_addr == nullptr)
-        return 0;
+        return false;
 #if defined(__aarch64__)
     uint64_t addr = (uint64_t)read_addr;
     uint64_t start_addr = 0, end_addr = 0, last_addr = 0;
@@ -33,7 +33,7 @@ extern "C" JNIEXPORT int JNICALL mem_read_access_by_maps(void *read_addr, size_t
     fmap = fopen("/proc/self/maps", "r");
     if(!fmap){
         LOGD("open /proc/self/maps file failed!/n");
-        return 0;
+        return false;
     }
 
     while(fgets(buff, sizeof(buff)-1, fmap) != nullptr) {
@@ -45,12 +45,12 @@ extern "C" JNIEXPORT int JNICALL mem_read_access_by_maps(void *read_addr, size_t
         if((addr >= start_addr) && (addr <= end_addr)){
             if('r' != access){
                 fclose(fmap);
-                return 0;
+                return false;
             }
 
             if((addr + len) < end_addr){
                 fclose(fmap);
-                return 1;
+                return true;
             }else {
                 last_addr = end_addr;
                 len = len - (end_addr - addr);
@@ -60,5 +60,5 @@ extern "C" JNIEXPORT int JNICALL mem_read_access_by_maps(void *read_addr, size_t
     }
 
     fclose(fmap);
-    return 0;
+    return false;
 }
