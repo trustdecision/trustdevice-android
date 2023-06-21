@@ -42,7 +42,7 @@ bool detectTaskTracerPid() {
     return false;
 }
 
-jint detect_debug(JNIEnv *env, jobject clazz) {
+jint detect_debug(JNIEnv *__unused, jobject __unused) {
     int result = 0;
     if (detectTracePid()) {
         result |= 0x1 << 1;
@@ -54,19 +54,19 @@ jint detect_debug(JNIEnv *env, jobject clazz) {
 }
 
 size_t detect_frida(char *hook_method, const size_t max_length) {
-    char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
+    const char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
                                  "access", "ptrace", "__system_property_get"};
-    char *libc_so_path;
+
 #ifdef __LP64__
-    libc_so_path = "/system/lib64/libc.so";
+    const char *libc_so_path = "/system/lib64/libc.so";
 #else
-    libc_so_path = "/system/lib/libc.so";
+    const char *libc_so_path = "/system/lib/libc.so";
 #endif
     void *handler = dlopen(libc_so_path, RTLD_NOW);
     if (!handler) {
         return 0;
     }
-    for (char *method_name: libc_method_names) {
+    for (const char *method_name: libc_method_names) {
         void *method_sym = dlsym(handler, method_name);
         if (method_sym == nullptr) {
             continue;
@@ -97,7 +97,7 @@ size_t detect_frida(char *hook_method, const size_t max_length) {
         if (operation == trampoline_code) {
             std::string str = std::to_string(i);
             size_t remaining_length = max_length - str.size();
-            snprintf(hook_method + strlen(hook_method), remaining_length, "%d,", i);
+            snprintf(hook_method + strlen(hook_method), remaining_length, "%zu,", i);
         }
     }
     size_t str_len = strlen(hook_method);
@@ -108,7 +108,7 @@ size_t detect_frida(char *hook_method, const size_t max_length) {
     return str_len;
 }
 
-jstring detect_hook(JNIEnv *env, jobject clazz) {
+jstring detect_hook(JNIEnv *env, jobject __unused) {
     const size_t max_length = 512;
     char frida_hook_method[max_length] = {};
     detect_frida(frida_hook_method, max_length);
