@@ -38,6 +38,14 @@ find_library( # Sets the name of the path variable.
         # you want CMake to locate.
         log)
 
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    # Debug build settings
+    add_definitions(-DDEBUG)
+elseif(CMAKE_BUILD_TYPE MATCHES Release)
+    # Release build settings
+    add_definitions(-DNDEBUG)
+endif()
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.

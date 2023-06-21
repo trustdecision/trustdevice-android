@@ -30,6 +30,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 
     result = JNI_VERSION_1_6;
 
+    LOGD("JNI_OnLoad called!");
+
     return result;
 }
 
