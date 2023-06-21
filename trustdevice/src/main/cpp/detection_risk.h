@@ -14,13 +14,8 @@ static unsigned long trampoline_code = 0xd61f020058000050;
 typedef unsigned long operation_type;
 static unsigned long trampoline_code = 0x58000050;
 #endif
-
-extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz);
-extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jobject clazz);
-
-class detection_risk {
-
-};
+jint detect_debug(JNIEnv *env, jobject clazz);
+jstring detect_hook(JNIEnv *env, jobject clazz);
 
 
 #endif //TRUSTDEVICE_ANDROID_DETECTION_RISK_H

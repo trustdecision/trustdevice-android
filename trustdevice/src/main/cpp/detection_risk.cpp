@@ -11,7 +11,7 @@
 #include <dlfcn.h>
 #include "utils.h"
 
-extern "C" JNIEXPORT int JNICALL readTracePid(const char *file_path) {
+int readTracePid(const char *file_path) {
     int tracerPid = 0;
     std::ifstream status_file(file_path);
     if (!status_file) {
@@ -28,7 +28,7 @@ extern "C" JNIEXPORT int JNICALL readTracePid(const char *file_path) {
     return tracerPid;
 }
 
-extern "C" JNIEXPORT bool JNICALL detectTracePid() {
+bool detectTracePid() {
     const char *status_path = "/proc/self/status";
     int tracerPid = readTracePid(status_path);
     if (tracerPid != 0) {
@@ -37,7 +37,7 @@ extern "C" JNIEXPORT bool JNICALL detectTracePid() {
     return false;
 }
 
-extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
+bool detectTaskTracerPid() {
     pid_t pid = getpid();
     char buffer[512];
     const char *format = "/proc/%d/task/%d/status";
@@ -49,7 +49,7 @@ extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
     return false;
 }
 
-extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz) {
+jint detect_debug(JNIEnv *env, jobject clazz) {
     int result = 0;
     if (detectTracePid()) {
         result |= 0x1 << 1;
@@ -60,7 +60,7 @@ extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz) {
     return static_cast<jint>(result);
 }
 
-extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t max_length) {
+size_t detect_frida(char *hook_method, const size_t max_length) {
     char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
                                  "access", "ptrace", "__system_property_get"};
     char *libc_so_path;
@@ -111,11 +111,10 @@ extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t
     if (str_len > 0 && hook_method[str_len - 1] == ',') {
         hook_method[str_len - 1] = '\0';
     }
-//    LOGD("frida hook method = %s\n", hook_method);
     return str_len;
 }
 
-extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jobject clazz) {
+jstring detect_hook(JNIEnv *env, jobject clazz) {
     const size_t max_length = 512;
     char frida_hook_method[max_length] = {};
     detect_frida(frida_hook_method, max_length);
