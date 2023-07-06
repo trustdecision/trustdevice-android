@@ -22,7 +22,7 @@
 	</a>
 </p>
 <p align="center">
-  <img src="resources/demo.gif" width="320px">
+  <img src="resources/demo_2.gif" width="320px">
 </p>
 
 
