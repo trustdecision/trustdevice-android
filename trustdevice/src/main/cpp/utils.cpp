@@ -21,7 +21,7 @@ jstring get_property(JNIEnv *env, jobject __unused, jstring _key, jstring _defau
 bool mem_read_access_by_maps(void *read_addr, size_t len) {
     if(read_addr == nullptr)
         return false;
-#if defined(__aarch64__)
+#if defined(__LP64__)
     uint64_t addr = (uint64_t)read_addr;
     uint64_t start_addr = 0, end_addr = 0, last_addr = 0;
 #else
@@ -37,7 +37,7 @@ bool mem_read_access_by_maps(void *read_addr, size_t len) {
     }
 
     while(fgets(buff, sizeof(buff)-1, fmap) != nullptr) {
-#if defined(__aarch64__)
+#if defined(__LP64__)
         sscanf(buff, "%lx-%lx %c", &start_addr, &end_addr, &access);
 #else
         sscanf(buff, "%x-%x %c", &start_addr, &end_addr, &access);
