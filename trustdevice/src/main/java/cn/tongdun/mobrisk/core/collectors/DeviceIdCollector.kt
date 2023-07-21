@@ -2,6 +2,7 @@ package cn.tongdun.mobrisk.core.collectors
 
 import android.annotation.SuppressLint
 import android.content.ContentResolver
+import android.content.Context
 import android.media.MediaDrm
 import android.net.Uri
 import android.os.Build
@@ -11,6 +12,7 @@ import cn.tongdun.mobrisk.core.tools.JNIHelper
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import cn.tongdun.mobrisk.core.tools.hash
 import java.util.*
+
 
 /**
  * @description:DeviceId
@@ -23,6 +25,7 @@ interface DeviceIdInterface {
     fun getMediaDrmId(): String?
     fun getGsfId(): String?
     fun getVbMetaDigest(): String?
+    fun getGoogleAdid(context: Context): String
 }
 
 private const val URI_GSF_CONTENT_PROVIDER = "content://com.google.android.gsf.gservices"
@@ -113,4 +116,9 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
 
     override fun getVbMetaDigest(): String =
         executeSafe({ JNIHelper.getProperty("ro.boot.vbmeta.digest", "") }, "")
+
+
+    override fun getGoogleAdid(context: Context): String =
+        executeSafe({ AdvertisingIdClient.getId(context).toString() }, "")
+
 }

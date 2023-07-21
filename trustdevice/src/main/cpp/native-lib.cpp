@@ -2,8 +2,6 @@
 #include "detection_risk.h"
 #include "utils.h"
 
-extern "C" {
-
 // Define JNI methods to be registered
 static JNINativeMethod jniMethods[] = {
         {"detectDebug", "()I", (void *) detect_debug},
@@ -12,7 +10,7 @@ static JNINativeMethod jniMethods[] = {
 };
 
 // Define JNI library registration function
-JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *__unused) {
     JNIEnv *env = nullptr;
     jint result = -1;
 
@@ -30,7 +28,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 
     result = JNI_VERSION_1_6;
 
-    return result;
-}
+    LOGD("JNI_OnLoad called!");
 
+    return result;
 }

@@ -4,6 +4,7 @@
     <string name="android_id_title">Android ID</string>
     <string name="risk_labels_title">Risk Labels</string>
     <string name="gsf_id_title">GSF ID</string>
+    <string name="gad_id_title">GAD ID</string>
     <string name="media_drm_id_title">Media DRM ID</string>
     <string name="vb_meta_id_title">VMD ID</string>
     <string name="setting_title">Settings</string>

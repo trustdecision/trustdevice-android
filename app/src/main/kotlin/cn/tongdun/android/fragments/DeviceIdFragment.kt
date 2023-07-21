@@ -27,6 +27,9 @@ class DeviceIdFragment : Fragment() {
     @BindView(R.id.tv_gsf_id)
     lateinit var mTvGSF_ID: TextView
 
+    @BindView(R.id.tv_gad_id)
+    lateinit var mTvGAD_ID: TextView
+
     @BindView(R.id.tv_media_drm_id)
     lateinit var mTvMediaDrmID: TextView
 
@@ -69,6 +72,7 @@ class DeviceIdFragment : Fragment() {
         mTvDeviceID.text = mDeviceInfoProvider!!.getDeviceInfo().deviceId
         mTvAndroidID.text = mDeviceInfoProvider!!.getDeviceInfo().androidId
         mTvGSF_ID.text = mDeviceInfoProvider!!.getDeviceInfo().gsfId
+        mTvGAD_ID.text = mDeviceInfoProvider!!.getDeviceInfo().gadId
         mTvMediaDrmID.text = mDeviceInfoProvider!!.getDeviceInfo().mediaDrmId
         mTvVMD_ID.text = mDeviceInfoProvider!!.getDeviceInfo().vbMetaDigest
         val riskLabels = mDeviceInfoProvider!!.getRiskInfo().toString()

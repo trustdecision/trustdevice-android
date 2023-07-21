@@ -102,6 +102,40 @@
             app:layout_constraintStart_toStartOf="@+id/tv_gsf_id"
             app:layout_constraintTop_toBottomOf="@+id/tv_gsf_id" />
 
+
+        <TextView
+            android:id="@+id/gad_id_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/gad_id_title"
+            android:textColor="@color/normal_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/line2"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+        <TextView
+            android:id="@+id/tv_gad_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/normal_text"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gad_id_title"
+            app:layout_constraintTop_toBottomOf="@+id/gad_id_title"
+            tools:text="xxxxxxxx" />
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/dividing_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_gad_id"
+            app:layout_constraintTop_toBottomOf="@+id/tv_gad_id" />
+
         <TextView
             android:id="@+id/media_drm_id_title"
             android:layout_width="wrap_content"
@@ -111,8 +145,8 @@
             android:textColor="@color/normal_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/line2"
-            app:layout_constraintTop_toBottomOf="@+id/line2" />
+            app:layout_constraintStart_toStartOf="@+id/line5"
+            app:layout_constraintTop_toBottomOf="@+id/line5" />
 
         <TextView
             android:id="@+id/tv_media_drm_id"

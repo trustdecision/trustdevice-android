@@ -25,6 +25,9 @@ add_library( # Sets the name of the library.
         utils.cpp
         detection_risk.cpp)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+
+
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
 # default, you only need to specify the name of the public NDK library
@@ -37,6 +40,14 @@ find_library( # Sets the name of the path variable.
         # Specifies the name of the NDK library that
         # you want CMake to locate.
         log)
+
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    # Debug build settings
+    add_definitions(-DDEBUG)
+elseif(CMAKE_BUILD_TYPE MATCHES Release)
+    # Release build settings
+    add_definitions(-DNDEBUG)
+endif()
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this

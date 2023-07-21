@@ -3,15 +3,8 @@
 //
 
 #include "detection_risk.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <unistd.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-#include "utils.h"
 
-extern "C" JNIEXPORT int JNICALL readTracePid(const char *file_path) {
+int readTracePid(const char *file_path) {
     int tracerPid = 0;
     std::ifstream status_file(file_path);
     if (!status_file) {
@@ -28,7 +21,7 @@ extern "C" JNIEXPORT int JNICALL readTracePid(const char *file_path) {
     return tracerPid;
 }
 
-extern "C" JNIEXPORT bool JNICALL detectTracePid() {
+bool detectTracePid() {
     const char *status_path = "/proc/self/status";
     int tracerPid = readTracePid(status_path);
     if (tracerPid != 0) {
@@ -37,7 +30,7 @@ extern "C" JNIEXPORT bool JNICALL detectTracePid() {
     return false;
 }
 
-extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
+bool detectTaskTracerPid() {
     pid_t pid = getpid();
     char buffer[512];
     const char *format = "/proc/%d/task/%d/status";
@@ -49,7 +42,7 @@ extern "C" JNIEXPORT bool JNICALL detectTaskTracerPid() {
     return false;
 }
 
-extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz) {
+jint detect_debug(JNIEnv *__unused, jobject __unused) {
     int result = 0;
     if (detectTracePid()) {
         result |= 0x1 << 1;
@@ -60,25 +53,29 @@ extern "C" JNIEXPORT jint JNICALL detect_debug(JNIEnv *env, jobject clazz) {
     return static_cast<jint>(result);
 }
 
-extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t max_length) {
-    char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
+size_t detect_frida(char *hook_method, const size_t max_length) {
+    const char *libc_method_names[] = {"strcat", "fopen", "open", "read", "strcmp", "strstr", "fgets",
                                  "access", "ptrace", "__system_property_get"};
-    char *libc_so_path;
+
 #ifdef __LP64__
-    libc_so_path = "/system/lib64/libc.so";
+    const char *libc_so_path = "/system/lib64/libc.so";
 #else
-    libc_so_path = "/system/lib/libc.so";
+    const char *libc_so_path = "/system/lib/libc.so";
 #endif
     void *handler = dlopen(libc_so_path, RTLD_NOW);
     if (!handler) {
         return 0;
     }
-    for (char *method_name: libc_method_names) {
+    for (const char *method_name: libc_method_names) {
         void *method_sym = dlsym(handler, method_name);
         if (method_sym == nullptr) {
             continue;
         }
         auto *bytecode = reinterpret_cast<uintptr_t *>(method_sym);
+        int access = mem_read_access_by_maps(bytecode, 16);
+        if (access == 0) {
+            continue;
+        }
         operation_type operation = *bytecode;
         if (operation == trampoline_code) {
             size_t remaining_length = max_length - strlen(method_name);
@@ -92,22 +89,26 @@ extern "C" JNIEXPORT size_t JNICALL detect_frida(char *hook_method, const size_t
     size_t td_method_len = sizeof(td_method_names) / sizeof(td_method_names[0]);
     for (size_t i = 0; i < td_method_len; ++i) {
         auto *bytecode = reinterpret_cast<uintptr_t *>(td_method_names[i]);
+        int access = mem_read_access_by_maps(bytecode, 16);
+        if (access == 0) {
+            continue;
+        }
         operation_type operation = *bytecode;
         if (operation == trampoline_code) {
             std::string str = std::to_string(i);
             size_t remaining_length = max_length - str.size();
-            snprintf(hook_method + strlen(hook_method), remaining_length, "%d,", i);
+            snprintf(hook_method + strlen(hook_method), remaining_length, "%zu,", i);
         }
     }
     size_t str_len = strlen(hook_method);
     if (str_len > 0 && hook_method[str_len - 1] == ',') {
         hook_method[str_len - 1] = '\0';
     }
-//    LOGD("frida hook method = %s\n", hook_method);
+    LOGD("hook methods: %s",hook_method);
     return str_len;
 }
 
-extern "C" JNIEXPORT jstring JNICALL detect_hook(JNIEnv *env, jobject clazz) {
+jstring detect_hook(JNIEnv *env, jobject __unused) {
     const size_t max_length = 512;
     char frida_hook_method[max_length] = {};
     detect_frida(frida_hook_method, max_length);
