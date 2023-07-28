@@ -13,5 +13,5 @@ interface HookInterface {
 }
 
 class HookCollector : HookInterface {
-    override fun detectHook(): String = executeSafe({ JNIHelper.detectHook() }, "")
+    override fun detectHook(): String = executeSafe({ JNIHelper.call1() }, "")
 }

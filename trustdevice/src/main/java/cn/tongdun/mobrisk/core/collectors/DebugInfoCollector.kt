@@ -19,7 +19,7 @@ class DebugInfoCollector : DebugInfoInterface {
         if (Debug.isDebuggerConnected()) {
             result = result or 0x1
         }
-        val ret: Int = executeSafe({ JNIHelper.detectDebug() }, 0)
+        val ret: Int = executeSafe({ JNIHelper.call0() }, 0)
         result = result or ret
         return result
     }

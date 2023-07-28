@@ -4,9 +4,9 @@
 
 // Define JNI methods to be registered
 static JNINativeMethod jniMethods[] = {
-        {"detectDebug", "()I", (void *) detect_debug},
-        {"detectHook", "()Ljava/lang/String;", (void *) detect_hook},
-        {"getProperty", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", (void *) get_property},
+        {"call0", "()I", (void *) detect_debug},
+        {"call1", "()Ljava/lang/String;", (void *) detect_hook},
+        {"call2", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", (void *) get_property},
 };
 
 // Define JNI library registration function

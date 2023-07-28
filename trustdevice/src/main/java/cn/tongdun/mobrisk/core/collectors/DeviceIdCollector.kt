@@ -115,7 +115,7 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
     }
 
     override fun getVbMetaDigest(): String =
-        executeSafe({ JNIHelper.getProperty("ro.boot.vbmeta.digest", "") }, "")
+        executeSafe({ JNIHelper.call2("ro.boot.vbmeta.digest", "") }, "")
 
 
     override fun getGoogleAdid(context: Context): String =
