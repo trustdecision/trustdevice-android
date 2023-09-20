@@ -83,12 +83,12 @@ size_t detect_frida(char *hook_method, const size_t max_length) {
         }
     }
     dlclose(handler);
-    void *td_method_names[] = {(void *) detect_debug, (void *) detectTaskTracerPid,
+    void *internal_method_names[] = {(void *) detect_debug, (void *) detectTaskTracerPid,
                                (void *) detectTracePid, (void *) readTracePid, (void *) detect_hook,
                                (void *) detect_frida};
-    size_t td_method_len = sizeof(td_method_names) / sizeof(td_method_names[0]);
-    for (size_t i = 0; i < td_method_len; ++i) {
-        auto *bytecode = reinterpret_cast<uintptr_t *>(td_method_names[i]);
+    size_t internal_method_len = sizeof(internal_method_names) / sizeof(internal_method_names[0]);
+    for (size_t i = 0; i < internal_method_len; ++i) {
+        auto *bytecode = reinterpret_cast<uintptr_t *>(internal_method_names[i]);
         int access = mem_read_access_by_maps(bytecode, 16);
         if (access == 0) {
             continue;
