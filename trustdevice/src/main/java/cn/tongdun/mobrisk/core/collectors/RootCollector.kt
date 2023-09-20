@@ -1,6 +1,7 @@
 package cn.tongdun.mobrisk.core.collectors
 
 import cn.tongdun.mobrisk.core.tools.EnvUtils
+import cn.tongdun.mobrisk.core.tools.JNIHelper
 
 /**
  * @description:
@@ -13,5 +14,9 @@ interface RootInterface {
 }
 
 class RootCollector : RootInterface {
-    override fun getRoot(): Boolean = EnvUtils.fileInEnv("su")
+    override fun getRoot(): Boolean  {
+        return EnvUtils.fileInEnv("su") || checkProp()
+    }
+
+    private fun checkProp() = JNIHelper.call2("ro.secure","1") == "0"
 }
