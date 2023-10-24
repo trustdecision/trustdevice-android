@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import cn.tongdun.mobrisk.core.tools.Constants.SHA256
 import cn.tongdun.mobrisk.core.tools.JNIHelper
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import cn.tongdun.mobrisk.core.tools.hash
@@ -42,13 +43,13 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
             androidId = getAndroidId()
         }
         if (!TextUtils.isEmpty(androidId)) {
-            return androidId!!.hash("SHA-256")
+            return androidId!!.hash(SHA256)
         }
         if (gsfId == null) {
             gsfId = getGsfId()
         }
         if (!TextUtils.isEmpty(gsfId)) {
-            return gsfId!!.hash("SHA-256")
+            return gsfId!!.hash(SHA256)
         }
         if (mediaDrmId != null) {
             mediaDrmId = getMediaDrmId()
@@ -56,7 +57,7 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
         if (!TextUtils.isEmpty(mediaDrmId)) {
             return mediaDrmId!!
         }
-        return getVbMetaDigest().hash("SHA-256")
+        return getVbMetaDigest().hash(SHA256)
     }
 
     @SuppressLint("HardwareIds")
@@ -78,7 +79,7 @@ class DeviceIdCollector(private val contentResolver: ContentResolver) : DeviceId
             val uuid = UUID(-0x121074568629b532L, -0x5c37d8232ae2de13L)
             drm = MediaDrm(uuid)
             val bytes = drm.getPropertyByteArray(MediaDrm.PROPERTY_DEVICE_UNIQUE_ID)
-            mediaDrmId = bytes.hash("SHA-256")
+            mediaDrmId = bytes.hash(SHA256)
         } catch (ignored: Throwable) {
         } finally {
             if (drm != null) {

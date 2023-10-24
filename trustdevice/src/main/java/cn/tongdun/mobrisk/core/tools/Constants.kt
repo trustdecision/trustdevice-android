@@ -66,6 +66,8 @@ object Constants {
     const val KEY_FILES_ABSOLUTE_PATH = "filesAbsolutePath"
     const val KEY_PACKAGE_NAME = "packageName"
 
+    const val SHA256 = "SHA-256"
+
     //magisk related files
     const val MAGISK_MOUNTS_PATH = "/proc/self/mounts"
     const val MAGISK_MOUNT_INFO_PATH = "/proc/self/mountinfo"
