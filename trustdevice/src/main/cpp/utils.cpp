@@ -4,6 +4,14 @@
 
 #include "utils.h"
 
+
+char *get_current_thread_name() {
+    static char thread_name[256] = {0};
+    memset(thread_name,'\0',256);
+    prctl(PR_GET_NAME, (unsigned long)thread_name);
+    return (char *)thread_name;
+}
+
 jstring get_property(JNIEnv *env, jobject __unused, jstring _key, jstring _default_value) {
     const char *c_key = env->GetStringUTFChars(_key, nullptr);
     char value[128] = "";

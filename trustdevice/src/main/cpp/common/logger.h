@@ -6,14 +6,22 @@
 #define TRUSTDEVICE_ANDROID_LOGGER_H
 
 #include <android/log.h>
+#include "../utils.h"
 
 #define TAG "TrustDevice_native"
 
 #ifdef DEBUG
-#define LOGI(...)  __android_log_print(ANDROID_LOG_INFO, TAG, __VA_ARGS__)
-#define LOGV(...)  __android_log_print(ANDROID_LOG_VERBOSE, TAG, __VA_ARGS__)
-#define LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__)
-#define LOGW(...)  __android_log_print(ANDROID_LOG_WARN, TAG, __VA_ARGS__)
+
+#define LOG(_level,...) do { \
+        char logBuffer[4096];                                              \
+        snprintf(logBuffer, sizeof(logBuffer), __VA_ARGS__);            \
+        __android_log_print(_level,TAG,"[%s] %s",get_current_thread_name(),logBuffer);                            \
+} while(false)
+
+#define LOGI(...) LOG(ANDROID_LOG_INFO,__VA_ARGS__)
+#define LOGV(...) LOG(ANDROID_LOG_VERBOSE,__VA_ARGS__)
+#define LOGD(...) LOG(ANDROID_LOG_DEBUG, __VA_ARGS__)
+#define LOGW(...) LOG(ANDROID_LOG_WARN,__VA_ARGS__)
 #else
 #define LOGI(...)
 #define LOGV(...)
