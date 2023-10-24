@@ -9,7 +9,6 @@ import org.json.JSONObject
  * @date: 2023/5/15
  */
 
-@Deprecated("pro no such class")
 class DeviceInfoProvider(private val deviceJson: JSONObject) {
     private var deviceDetail: JSONObject =
         deviceJson.optJSONObject(Constants.KEY_DEVICE_DETAIL) ?: JSONObject()

@@ -9,7 +9,6 @@ import org.json.JSONArray
  * @author: wuzuchang
  * @date: 2023/5/16
  */
-@Deprecated("pro no such class")
 data class SensorInfoRawData(val sensorInfo: String) {
     fun getSensorTotal(): Int {
         if (TextUtils.isEmpty(sensorInfo)) {

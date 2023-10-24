@@ -7,7 +7,6 @@ import android.util.Pair
  * @author: wuzuchang
  * @date: 2023/5/15
  */
-@Deprecated("pro no such class")
 data class CpuInfoRawData(
     val cpuHardware: String,
     val cpuProcessor: String,

@@ -8,7 +8,6 @@ import cn.tongdun.mobrisk.core.tools.Logger
  * @author: wuzuchang
  * @date: 2023/5/16
  */
-@Deprecated("pro no such class")
 data class RiskInfoRawData(
     val root: Boolean,
     val debug: Boolean,
