@@ -41,6 +41,7 @@ object DeviceInfoUtils {
             risk.put(Constants.KEY_MAGISK, data.optString(Constants.KEY_MAGISK))
             risk.put(Constants.KEY_HOOK, getHookStatus(data))
             risk.put(Constants.KEY_EMULATOR, getEmulatorStatus(data))
+            risk.put(Constants.KEY_VPN, getVpnStatus(data))
         }
         return risk
     }
@@ -74,5 +75,9 @@ object DeviceInfoUtils {
 
     private fun getEmulatorStatus(data: JSONObject): String {
         return data.optString(Constants.KEY_EMULATOR)
+    }
+
+    private fun getVpnStatus(data: JSONObject): String {
+        return data.optString(Constants.KEY_VPN)
     }
 }

@@ -41,6 +41,8 @@ object Constants {
     const val KEY_MAGISK = "magisk"
     const val KEY_EMULATOR = "emulator"
     const val KEY_HOOK = "hook"
+    const val KEY_VPN = "vpn"
+
     const val KEY_COUNTRY = "country"
     const val KEY_LANGUAGE = "language"
     const val KEY_TIMEZONE = "timezone"

@@ -35,6 +35,7 @@ class DeviceInfo {
     var root = false
     var xposed = false
     var magisk = false
+    var vpn = false
     var emulator = false
     var hook: String? = null
     var country: String? = null

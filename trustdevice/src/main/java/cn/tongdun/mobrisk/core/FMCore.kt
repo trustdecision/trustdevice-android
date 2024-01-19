@@ -48,6 +48,7 @@ class FMCore private constructor() {
             collectorMagisk()
             collectorEmulator()
             collectorHook()
+            collectorVpn()
             collectorBuildInfo()
             collectorDeviceBaseInfo()
             collectorDevicePersonalizationInfo()
@@ -100,6 +101,11 @@ class FMCore private constructor() {
     private fun collectorEmulator() {
         val emulatorCollector = EmulatorCollector()
         mDeviceInfo.emulator = emulatorCollector.detectEmulator()
+    }
+
+    private fun collectorVpn() {
+        val vpnCollector = VpnCollector()
+        mDeviceInfo.vpn = vpnCollector.detectVpn(mContext)
     }
 
     private fun collectorBuildInfo() {

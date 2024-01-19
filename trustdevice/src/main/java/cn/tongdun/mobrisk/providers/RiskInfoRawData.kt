@@ -16,6 +16,7 @@ data class RiskInfoRawData(
     val magisk: Boolean,
     val hook: Boolean,
     val emulator: Boolean,
+    val vpn: Boolean
 ) {
 
     override fun toString(): String {
@@ -26,7 +27,8 @@ data class RiskInfoRawData(
             xposed.takeIf { it }?.let { "xposed" },
             magisk.takeIf { it }?.let { "magisk" },
             hook.takeIf { it }?.let { "hook" },
-            emulator.takeIf { it }?.let { "emulator" }
+            emulator.takeIf { it }?.let { "emulator" },
+            vpn.takeIf { it }?.let { "vpn" }
         )
         return risks.filterNotNull().joinToString()
     }
