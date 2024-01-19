@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.trustdevice.android'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.trustdevice.android"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 5
         versionName "1.0.4"
         ndk {
