@@ -1,5 +1,6 @@
 package cn.tongdun.mobrisk.core.tools
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 
@@ -14,6 +15,7 @@ object NetworkUtils {
         return getNetworkTypes(context).contains(type)
     }
 
+    @SuppressLint("MissingPermission")
     fun getNetworkTypes(context: Context?): List<Int> {
 
         val list = ArrayList<Int>()
