@@ -3,29 +3,20 @@ package cn.tongdun.android.activitys
 
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
-import butterknife.BindView
 import cn.tongdun.android.adapters.ViewPagerAdapter
 import cn.tongdun.android.base.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.trustdevice.android.R
+import com.trustdevice.android.databinding.ActivityMainBinding
 
 
-class MainActivity : BaseActivity() {
-
-    @BindView(R.id.tab_layout)
-    lateinit var mTabLayout: TabLayout
-
-    @BindView(R.id.viewpager)
-    lateinit var mViewPager: ViewPager2
-
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val mTabList: MutableList<String> = ArrayList()
-    var mTabLayoutMediator: TabLayoutMediator? = null
+    private var mTabLayoutMediator: TabLayoutMediator? = null
+    override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
-    override val contentViewResId: Int
-        get() = R.layout.activity_main
-
-   override fun initData() {
+    override fun initData() {
         mTabList.add("Device id")
         mTabList.add("Device info")
     }
@@ -33,10 +24,10 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         val viewPagerAdapter =
             ViewPagerAdapter(mTabList.size, getSupportFragmentManager(), getLifecycle())
-        mViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
-        mViewPager.adapter = viewPagerAdapter
+        binding.viewpager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+        binding.viewpager.adapter = viewPagerAdapter
         mTabLayoutMediator = TabLayoutMediator(
-            mTabLayout, mViewPager
+            binding.tabLayout, binding.viewpager
         ) { tab: TabLayout.Tab, position: Int ->
             val tabView = TextView(this)
             tabView.text = mTabList[position]
