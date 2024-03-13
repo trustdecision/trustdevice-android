@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.text.TextUtils
+import cn.tongdun.mobrisk.core.tools.executeSafe
 
 /**
  * @description: App List
@@ -23,23 +24,24 @@ class AppListCollector(packageManager: PackageManager) : AppListDataInterface {
     private val systemAppList: MutableList<String?> = ArrayList()
 
     init {
-        packageManager.getInstalledPackages(PackageManager.GET_ACTIVITIES)
-            .filter {
-                isSystemApp(it)
-            }.map {
-                appList.add(it.packageName)
+        executeSafe {
+            packageManager.getInstalledPackages(PackageManager.GET_ACTIVITIES)
+                .filter {
+                    isSystemApp(it)
+                }.map {
+                    appList.add(it.packageName)
+                }
+            packageManager.getInstalledPackages(PackageManager.GET_META_DATA).fold(
+                Pair(systemAppList, appList)
+            ) { (systemList, appList), packageInfo ->
+                if (isSystemApp(packageInfo)) {
+                    systemList.add(packageInfo.packageName)
+                } else {
+                    appList.add(packageInfo.packageName)
+                }
+                Pair(systemList, appList)
             }
-        packageManager.getInstalledPackages(PackageManager.GET_META_DATA).fold(
-            Pair(systemAppList, appList)
-        ) { (systemList, appList), packageInfo ->
-            if (isSystemApp(packageInfo)) {
-                systemList.add(packageInfo.packageName)
-            } else {
-                appList.add(packageInfo.packageName)
-            }
-            Pair(systemList, appList)
         }
-
     }
 
     @SuppressLint("QueryPermissionsNeeded")
