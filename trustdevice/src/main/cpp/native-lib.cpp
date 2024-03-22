@@ -12,23 +12,23 @@ static JNINativeMethod jniMethods[] = {
 // Define JNI library registration function
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *__unused) {
     JNIEnv *env = nullptr;
-    jint result = -1;
+    jclass clazz = NULL;
 
     if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
-        return result;
+        goto err_exit;
     }
 
-    jclass clazz = env->FindClass("cn/tongdun/mobrisk/core/tools/JNIHelper");
+     clazz = env->FindClass("cn/tongdun/mobrisk/core/tools/JNIHelper");
+
     if (clazz == nullptr) {
-        return result;
+        goto err_exit;
     }
     if (env->RegisterNatives(clazz, jniMethods, sizeof(jniMethods) / sizeof(jniMethods[0])) < 0) {
-        return result;
+        goto err_exit;
     }
-
-    result = JNI_VERSION_1_6;
-
     LOGD("JNI_OnLoad called!");
 
-    return result;
+    return JNI_VERSION_1_6;
+    err_exit:
+    return JNI_ERR;
 }
