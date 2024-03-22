@@ -52,6 +52,7 @@ class EmulatorCollector : EmulatorInterface {
         || "andyosx" == Build.DEVICE
         || "generic" == Build.DEVICE
         || "generic_x86" == Build.DEVICE
+        || "emu64a" == Build.DEVICE
         || Build.DEVICE.lowercase(Locale.getDefault()).contains("mumu")
         || Build.DEVICE.lowercase(Locale.getDefault()).contains("zerofltezc")
 
