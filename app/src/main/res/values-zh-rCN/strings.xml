@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TrustDevice Fingerprint</string>
+    <string name="device_id_title">你的设备ID</string>
+    <string name="android_id_title">安卓ID</string>
+    <string name="risk_labels_title">发现的风险项</string>
+    <string name="gsf_id_title">谷歌服务框架ID</string>
+    <string name="gad_id_title">谷歌广告ID</string>
+    <string name="media_drm_id_title">数字版权管理ID</string>
+    <string name="vb_meta_id_title">VB Meta ID</string>
+    <string name="setting_title">设置</string>
+    <string name="internal_storage_title">内部存储</string>
+    <string name="ram_title">运行内存</string>
+    <string name="battery_title">电池</string>
+    <string name="all_apps">应用</string>
+    <string name="all_sensors">传感器</string>
+    <string name="app_list">应用列表</string>
+    <string name="show_system_apps">显示系统应用</string>
+    <string name="hide_system_apps">隐藏系统应用</string>
+    <string name="sensor_list">传感器列表</string>
+</resources>
