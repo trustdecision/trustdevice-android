@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TrustDevice Fingerprint</string>
-    <string name="device_id_title">你的设备ID</string>
+    <string name="device_id_title">设备ID</string>
     <string name="android_id_title">安卓ID</string>
-    <string name="risk_labels_title">发现的风险项</string>
+    <string name="risk_labels_title">风险标签</string>
     <string name="gsf_id_title">谷歌服务框架ID</string>
     <string name="gad_id_title">谷歌广告ID</string>
     <string name="media_drm_id_title">数字版权管理ID</string>
