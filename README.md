@@ -255,7 +255,7 @@ Try the library features in the [TrustDevice Android Demo App](https://github.co
 | Items                     | Description             |
 | :-----------------------: |:-----------------------:|
 | Supported System Versions | Android5.0+ ( API 21+ ) |
-| Supported Architecture    | armeabi-v7a, arm64-v8a, x86,X86_64 |
+| Supported Architecture    | armeabi-v7a, arm64-v8a, x86,x86_64 |
 
 ## TrustDevice Pro VS Others
 <table>
