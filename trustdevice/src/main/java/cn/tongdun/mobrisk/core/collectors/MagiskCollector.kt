@@ -1,8 +1,7 @@
 package cn.tongdun.mobrisk.core.collectors
 
-import cn.tongdun.mobrisk.core.tools.Constants
 import cn.tongdun.mobrisk.core.tools.EnvUtils
-import java.io.File
+import cn.tongdun.mobrisk.core.tools.JNIHelper
 
 /**
  * @description:
@@ -20,11 +19,7 @@ class MagiskCollector : MagiskInterface {
     }
 
     private fun detectMagiskByLastModified(): Boolean {
-        val mountsFile: File = File(Constants.MAGISK_MOUNTS_PATH)
-        val mountInfoFile: File = File(Constants.MAGISK_MOUNT_INFO_PATH)
-        val mountStatsFile: File = File(Constants.MAGISK_MOUNT_STATS_PATH)
-        return !(mountsFile.lastModified() == mountInfoFile.lastModified()
-                && mountInfoFile.lastModified() == mountStatsFile.lastModified())
+        return JNIHelper.call3()
     }
 
     private fun detectMagiskByFile(): Boolean {

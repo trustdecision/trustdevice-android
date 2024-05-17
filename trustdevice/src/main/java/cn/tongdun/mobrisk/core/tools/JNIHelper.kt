@@ -15,4 +15,6 @@ object JNIHelper {
     external fun call1(): String
     //get property
     external fun call2(key: String, defaultValue: String): String
+    //mount files time compare
+    external fun call3(): Boolean
 }

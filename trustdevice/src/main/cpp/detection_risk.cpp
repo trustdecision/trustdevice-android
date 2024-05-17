@@ -114,3 +114,26 @@ jstring detect_hook(JNIEnv *env, jobject __unused) {
     detect_frida(frida_hook_method, max_length);
     return env->NewStringUTF(frida_hook_method);
 }
+
+jboolean detectMagiskByMount(__unused JNIEnv *env, jobject __unused) {
+    const char *mounts_path = "/proc/self/mounts";
+    const char *mountinfo_path = "/proc/self/mountinfo";
+    const char *mountstats_path = "/proc/self/mountstats";
+
+    struct stat mounts_stat;
+    stat(mounts_path,&mounts_stat);
+
+    struct stat mountinfo_stat;
+    stat(mountinfo_path,&mountinfo_stat);
+
+    struct stat mountstats_stat;
+    stat(mountstats_path,&mountstats_stat);
+
+    if (!((mounts_stat.st_mtime == mountinfo_stat.st_mtime) &&
+         (mountinfo_stat.st_mtime == mountstats_stat.st_mtime))) {
+        LOGD("detectMagiskByMount found abnormality in mounted files");
+        return JNI_TRUE;
+    }
+
+    return JNI_FALSE;
+}
