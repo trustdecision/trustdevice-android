@@ -17,8 +17,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     override fun initData() {
-        mTabList.add("Device id")
-        mTabList.add("Device info")
+        mTabList.add(getString(R.string.tab_title_device_id))
+        mTabList.add(getString(R.string.tab_title_device_info))
     }
 
     override fun initView() {

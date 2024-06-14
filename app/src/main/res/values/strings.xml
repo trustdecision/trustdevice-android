@@ -6,7 +6,7 @@
     <string name="gsf_id_title">GSF ID</string>
     <string name="gad_id_title">GAD ID</string>
     <string name="media_drm_id_title">Media DRM ID</string>
-    <string name="vb_meta_id_title">VMD ID</string>
+    <string name="vb_meta_id_title">vbmetaDigest</string>
     <string name="setting_title">Settings</string>
     <string name="internal_storage_title">Internal Storage</string>
     <string name="ram_title">Random Access Memory</string>
@@ -17,4 +17,11 @@
     <string name="show_system_apps">show system apps</string>
     <string name="hide_system_apps">hide system apps</string>
     <string name="sensor_list">Sensor list</string>
+    <string name="tab_title_device_id">Device id</string>
+    <string name="tab_title_device_info">Device info</string>
+    <string name="memory_desc">The state at the time of collection</string>
+    <string name="free_text">Free</string>
+    <string name="total_capacity_text">total capacity</string>
+    <string name="health_text">health</string>
+    <string name="temperature_text">temperature</string>
 </resources>

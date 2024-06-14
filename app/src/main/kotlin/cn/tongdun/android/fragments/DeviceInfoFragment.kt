@@ -14,6 +14,7 @@ import cn.tongdun.android.adapters.DeviceInfoItemAdapter
 import cn.tongdun.android.base.BaseFragment
 import cn.tongdun.mobrisk.TDRisk
 import cn.tongdun.mobrisk.providers.DeviceInfoProvider
+import com.trustdevice.android.R
 import com.trustdevice.android.databinding.FragmentDeviceInfoBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -94,10 +95,11 @@ class DeviceInfoFragment : BaseFragment<FragmentDeviceInfoBinding>() {
             val availableStorage =
                 deviceInfoProvider.getMemoryInfo().availableStorage / Math.pow(1024.0, 3.0)
             val useStorage = totalStorage - availableStorage
+            val freeText = getString(R.string.free_text)
             val internalStorageInfo =
                 String.format(Locale.US, "%.2fGB", useStorage) + " / " + String.format(
                     Locale.US, "%.2fGB", totalStorage
-                ) + ", Free: " + String.format(Locale.US, "%.2fGB", availableStorage)
+                ) + ", ${freeText}: " + String.format(Locale.US, "%.2fGB", availableStorage)
 
             tvInternalStorageInfo.text = internalStorageInfo
             val scale = 100 / totalStorage
@@ -110,15 +112,16 @@ class DeviceInfoFragment : BaseFragment<FragmentDeviceInfoBinding>() {
 
     private fun initRAMView() {
         binding.memoryInfoLayout.apply {
-            tvRamPath.text = "The state at the time of collection"
+            tvRamPath.text = getString(R.string.memory_desc)
             val totalMemory = deviceInfoProvider.getMemoryInfo().totalMemory / Math.pow(1024.0, 3.0)
             val availableMemory =
                 deviceInfoProvider.getMemoryInfo().availableMemory / Math.pow(1024.0, 3.0)
             val useMemory = totalMemory - availableMemory
+            val freeText = getString(R.string.free_text)
             val internalStorageInfo =
                 String.format(Locale.US, "%.2fGB", useMemory) + " / " + String.format(
                     Locale.US, "%.2fGB", totalMemory
-                ) + ", Free: " + String.format(Locale.US, "%.2fGB", availableMemory)
+                ) + ", ${freeText}: " + String.format(Locale.US, "%.2fGB", availableMemory)
             tvRamInfo.text = internalStorageInfo
             val scale = 100 / totalMemory
             ramProgress.progress = (useMemory * scale).toInt()
@@ -130,8 +133,9 @@ class DeviceInfoFragment : BaseFragment<FragmentDeviceInfoBinding>() {
     private fun initBatteryView() {
         binding.batteryInfoLayout.apply {
             tvBatteryStatus.text = "(" + deviceInfoProvider.getBatteryInfo().status + ")"
+            val totalCapacityText = getString(R.string.total_capacity_text)
             tvBatteryHealth.text =
-                "total capacity: " + deviceInfoProvider.getBatteryInfo().TotalCapacity + "mAh"
+                "${totalCapacityText}: " + deviceInfoProvider.getBatteryInfo().TotalCapacity + "mAh"
             val power = deviceInfoProvider.getBatteryInfo().level
 
             batteryProgress.progress = power
@@ -139,8 +143,10 @@ class DeviceInfoFragment : BaseFragment<FragmentDeviceInfoBinding>() {
             val temp = deviceInfoProvider.getBatteryInfo().temp
             val temperature = BigDecimal.valueOf((temp.toFloat() / 10).toDouble())
                 .setScale(2, RoundingMode.HALF_UP).toDouble()
+            val healthText = getString(R.string.health_text)
+            val temperatureText = getString(R.string.temperature_text)
             tvBatteryInfo.text =
-                "health: " + deviceInfoProvider.getBatteryInfo().health + ", temperature: " + temperature + "℃"
+                "${healthText}: " + deviceInfoProvider.getBatteryInfo().health + ", ${temperatureText}: " + temperature + "℃"
         }
 
     }
