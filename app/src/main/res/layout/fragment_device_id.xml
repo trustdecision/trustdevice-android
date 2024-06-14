@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:text="@string/device_id_title"
             android:textColor="@color/normal_text"
-            android:textSize="15sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +28,7 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/normal_text"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/device_id_title"
             app:layout_constraintTop_toBottomOf="@+id/device_id_title"
