@@ -137,3 +137,38 @@ jboolean detectMagiskByMount(__unused JNIEnv *env, jobject __unused) {
 
     return JNI_FALSE;
 }
+
+jboolean checkBinInEnv(JNIEnv *env, jobject __unused klass,jstring binName) {
+    char *sys_env = getenv("PATH");
+    if(env == nullptr){
+        return false;
+    }
+    const char *binNameChs = env->GetStringUTFChars(binName,nullptr);
+    const size_t ENV_PATH_LEN = 64;
+    char *curPath;
+    char envItemPath[ENV_PATH_LEN] = {0};
+    char *envPath = strdup(sys_env);
+    bool accessible = false;
+    if (envPath != nullptr) {
+        curPath = strtok(envPath, ":");
+        while (curPath != nullptr) {
+            memset(envItemPath,'\0',ENV_PATH_LEN);
+            snprintf(envItemPath, ENV_PATH_LEN, "%s/%s", curPath, binNameChs);
+
+            int accessStatus = access(envItemPath,X_OK);
+
+            LOGD("%s path: %s,bin file access status: %d",__FUNCTION__ ,envItemPath, accessStatus);
+
+            if (accessStatus != -1) {
+                accessible = true;
+                break;
+            }
+            curPath = strtok(nullptr, ":");
+        }
+        free(envPath);
+    }
+
+    env->ReleaseStringUTFChars(binName,binNameChs);
+
+    return accessible;
+}

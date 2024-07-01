@@ -7,7 +7,8 @@ static JNINativeMethod jniMethods[] = {
         {"call0", "()I", (void *) detect_debug},
         {"call1", "()Ljava/lang/String;", (void *) detect_hook},
         {"call2", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", (void *) get_property},
-        {"call3", "()Z", (void *) detectMagiskByMount}
+        {"call3", "()Z", (void *) detectMagiskByMount},
+        {"call4", "(Ljava/lang/String;)Z", (void *) checkBinInEnv}
 };
 
 // Define JNI library registration function
