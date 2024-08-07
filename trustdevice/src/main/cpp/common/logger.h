@@ -6,7 +6,7 @@
 #define TRUSTDEVICE_ANDROID_LOGGER_H
 
 #include <android/log.h>
-#include "../utils.h"
+#include "../trustdevice_utils.h"
 
 #define TAG "TrustDevice_native"
 

@@ -7,9 +7,9 @@ add_library(
 
         SHARED
 
-        native-lib.cpp
-        utils.cpp
-        detection_risk.cpp)
+        trustdevice.cpp
+        trustdevice_utils.cpp
+        trustdevice_risk.cpp)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 

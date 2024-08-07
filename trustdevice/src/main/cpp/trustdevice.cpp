@@ -1,6 +1,6 @@
 #include <jni.h>
-#include "detection_risk.h"
-#include "utils.h"
+#include "trustdevice_risk.h"
+#include "trustdevice_utils.h"
 
 // Define JNI methods to be registered
 static JNINativeMethod jniMethods[] = {
