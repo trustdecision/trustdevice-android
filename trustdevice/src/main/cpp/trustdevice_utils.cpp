@@ -40,7 +40,7 @@ bool mem_read_access_by_maps(void *read_addr, size_t len) {
     FILE *fmap;
     fmap = fopen("/proc/self/maps", "r");
     if(!fmap){
-        LOGD("open /proc/self/maps file failed!/n");
+        LOGW("open /proc/self/maps file failed!");
         return false;
     }
 
