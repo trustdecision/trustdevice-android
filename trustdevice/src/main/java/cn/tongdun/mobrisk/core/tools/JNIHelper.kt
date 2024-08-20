@@ -17,5 +17,6 @@ object JNIHelper {
     external fun call2(key: String, defaultValue: String): String
     //mount files time compare
     external fun call3(): Boolean
+    //check bin on environment variables
     external fun call4(binName: String): Boolean
 }
