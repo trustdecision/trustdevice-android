@@ -135,7 +135,7 @@ class DeviceInfoFragment : BaseFragment<FragmentDeviceInfoBinding>() {
             tvBatteryStatus.text = "(" + deviceInfoProvider.getBatteryInfo().status + ")"
             val totalCapacityText = getString(R.string.total_capacity_text)
             tvBatteryHealth.text =
-                "${totalCapacityText}: " + deviceInfoProvider.getBatteryInfo().TotalCapacity + "mAh"
+                "${totalCapacityText}: " + deviceInfoProvider.getBatteryInfo().totalCapacity + "mAh"
             val power = deviceInfoProvider.getBatteryInfo().level
 
             batteryProgress.progress = power

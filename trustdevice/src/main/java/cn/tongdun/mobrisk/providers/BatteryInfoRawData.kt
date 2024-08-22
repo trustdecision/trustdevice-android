@@ -10,5 +10,5 @@ data class BatteryInfoRawData(
     val status: String,
     val temp: Int,
     val level: Int,
-    val TotalCapacity: String
+    val totalCapacity: String
 )
