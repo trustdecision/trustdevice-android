@@ -43,7 +43,9 @@ class DeviceIdFragment : BaseFragment<FragmentDeviceIdBinding>() {
             mDeviceInfoProvider?.run {
                 tvDeviceId.text = getDeviceInfo().deviceId
                 tvAndroidId.text = getDeviceInfo().androidId
-                tvGsfId.text = getDeviceInfo().gsfId
+                if(getDeviceInfo().gsfId.isNotEmpty()) {
+                    tvGsfId.text = getDeviceInfo().gsfId.toLong().toString(16)
+                }
                 tvGadId.text = getDeviceInfo().gadId
                 tvMediaDrmId.text = getDeviceInfo().mediaDrmId
                 tvVmdId.text = getDeviceInfo().vbMetaDigest
