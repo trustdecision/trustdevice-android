@@ -13,7 +13,7 @@ fun String.hash(algorithm: String): String {
     return executeSafe({
         val md = MessageDigest.getInstance(algorithm)
         md.update(this.toByteArray(StandardCharsets.UTF_8))
-        md.digest().toHexString()
+        md.digest().toUppercaseHexString()
     }, "")
 }
 
@@ -49,11 +49,11 @@ fun ByteArray.hash(algorithm: String): String {
     return executeSafe({
         val md = MessageDigest.getInstance(algorithm)
         md.update(this)
-        md.digest().toHexString()
+        md.digest().toUppercaseHexString()
     }, "")
 }
 
-fun ByteArray.toHexString(): String {
+fun ByteArray.toUppercaseHexString(): String {
     val hex = StringBuilder()
     // Iterating through each byte in the array
     for (i in this) {
