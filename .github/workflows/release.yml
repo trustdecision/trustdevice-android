@@ -32,21 +32,8 @@ jobs:
       - name: Build library
         run: ./gradlew trustdevice:assembleRelease
 
-#      - name: Save library to artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          path: trustdevice/build/outputs/aar/*
-
       - name: Build App
         run: ./gradlew app:assembleRelease
-
-#      - name: Save application to artifacts
-#        uses: actions/upload-artifact@v3
-#        with:
-#          path: app/build/outputs/apk/release/*
-
-#      - name: Download artifact
-#        uses: actions/download-artifact@v3
 
       - name: Display structure of downloaded files
         run: ls -R
