@@ -23,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         val viewPagerAdapter =
-            ViewPagerAdapter(mTabList.size, getSupportFragmentManager(), getLifecycle())
+            ViewPagerAdapter(mTabList.size, supportFragmentManager, lifecycle)
         binding.viewpager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
         binding.viewpager.adapter = viewPagerAdapter
         mTabLayoutMediator = TabLayoutMediator(
