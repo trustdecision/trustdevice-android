@@ -34,7 +34,7 @@ jobs:
       run: ./gradlew trustdevice:assembleRelease
 
     - name: Save library to artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: trustdevice/build/outputs/aar/*
 
@@ -42,6 +42,6 @@ jobs:
       run: ./gradlew app:assembleRelease
 
     - name: Save application to artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: app/build/outputs/apk/release/*
