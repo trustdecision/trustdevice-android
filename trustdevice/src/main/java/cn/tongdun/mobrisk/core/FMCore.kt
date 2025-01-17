@@ -9,7 +9,6 @@ import cn.tongdun.mobrisk.beans.DeviceInfo
 import cn.tongdun.mobrisk.core.collectors.*
 import cn.tongdun.mobrisk.core.tools.DeviceInfoUtils
 import cn.tongdun.mobrisk.core.collectors.SettingInfoCollector
-import cn.tongdun.mobrisk.core.tools.Logger
 import cn.tongdun.mobrisk.core.tools.executeSafe
 import org.json.JSONObject
 import java.util.concurrent.CountDownLatch
@@ -49,6 +48,7 @@ class FMCore private constructor() {
             collectorEmulator()
             collectorHook()
             collectorVpn()
+            collectorDeviceInfoTampered()
             collectorBuildInfo()
             collectorDeviceBaseInfo()
             collectorDevicePersonalizationInfo()
@@ -106,6 +106,11 @@ class FMCore private constructor() {
     private fun collectorVpn() {
         val vpnCollector = VpnCollector()
         mDeviceInfo.vpn = vpnCollector.detectVpn(mContext)
+    }
+
+    private fun collectorDeviceInfoTampered() {
+        val deviceIdCollector = DeviceInfoTamperedCollector()
+        mDeviceInfo.deviceInfoTampered = deviceIdCollector.tampered(mContext)
     }
 
     private fun collectorBuildInfo() {

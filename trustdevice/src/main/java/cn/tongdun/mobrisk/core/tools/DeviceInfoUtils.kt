@@ -1,6 +1,7 @@
 package cn.tongdun.mobrisk.core.tools
 
 import cn.tongdun.mobrisk.beans.DeviceInfo
+import cn.tongdun.mobrisk.beans.DisplayName
 import org.json.JSONObject
 import java.io.File
 
@@ -18,7 +19,13 @@ object DeviceInfoUtils {
         for (field in fields) {
             executeSafe {
                 field.isAccessible = true
-                val key = field.name
+                var key = field.name
+                for (annotation in field.declaredAnnotations) {
+                    if(annotation is DisplayName) {
+                        key = annotation.value
+                        break
+                    }
+                }
                 val value = field.get(deviceInfo)
                 detail.put(key, value?.toString())
             }
@@ -42,6 +49,7 @@ object DeviceInfoUtils {
             risk.put(Constants.KEY_HOOK, getHookStatus(data))
             risk.put(Constants.KEY_EMULATOR, getEmulatorStatus(data))
             risk.put(Constants.KEY_VPN, getVpnStatus(data))
+            risk.put(Constants.KEY_DEVICE_INFO_TAMPERED, getDeviceInfoTamperedStatus(data))
         }
         return risk
     }
@@ -79,5 +87,9 @@ object DeviceInfoUtils {
 
     private fun getVpnStatus(data: JSONObject): String {
         return data.optString(Constants.KEY_VPN)
+    }
+
+    private fun getDeviceInfoTamperedStatus(data: JSONObject): String {
+        return data.optString(Constants.KEY_DEVICE_INFO_TAMPERED)
     }
 }

@@ -1,5 +1,10 @@
 package cn.tongdun.mobrisk.beans
 
+import cn.tongdun.mobrisk.core.tools.Constants
+
+@Target(AnnotationTarget.FIELD)
+annotation class DisplayName(val value: String)
+
 /**
  * @description: Device info
  * @author: wuzuchang
@@ -37,6 +42,8 @@ class DeviceInfo {
     var magisk = false
     var vpn = false
     var emulator = false
+    @DisplayName(Constants.KEY_DEVICE_INFO_TAMPERED)
+    var deviceInfoTampered = false
     var hook: String? = null
     var country: String? = null
     var language: String? = null

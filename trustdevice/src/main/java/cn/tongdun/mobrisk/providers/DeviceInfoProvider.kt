@@ -32,7 +32,8 @@ class DeviceInfoProvider(private val deviceJson: JSONObject) {
         riskLabel.optBoolean(Constants.KEY_MAGISK),
         riskLabel.optBoolean(Constants.KEY_HOOK),
         riskLabel.optBoolean(Constants.KEY_EMULATOR),
-        riskLabel.optBoolean(Constants.KEY_VPN)
+        riskLabel.optBoolean(Constants.KEY_VPN),
+        riskLabel.optBoolean(Constants.KEY_DEVICE_INFO_TAMPERED)
     )
 
     fun getAppListInfo(): AppListsRawData = AppListsRawData(

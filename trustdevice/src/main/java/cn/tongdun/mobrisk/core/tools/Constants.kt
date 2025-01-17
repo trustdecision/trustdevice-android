@@ -34,6 +34,8 @@ object Constants {
     const val KEY_CPU_HARDWARE = "cpuHardware"
     const val KEY_CORES_COUNT = "coresCount"
     const val KEY_ABI_TYPE = "abiType"
+
+    // risk label
     const val KEY_DEBUG = "debug"
     const val KEY_MULTIPLE = "multiple"
     const val KEY_ROOT = "root"
@@ -42,6 +44,7 @@ object Constants {
     const val KEY_EMULATOR = "emulator"
     const val KEY_HOOK = "hook"
     const val KEY_VPN = "vpn"
+    const val KEY_DEVICE_INFO_TAMPERED = "device_info_tampered"
 
     const val KEY_COUNTRY = "country"
     const val KEY_LANGUAGE = "language"
