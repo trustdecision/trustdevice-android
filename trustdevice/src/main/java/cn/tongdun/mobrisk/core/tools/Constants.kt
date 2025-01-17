@@ -73,8 +73,4 @@ object Constants {
 
     const val SHA256 = "SHA-256"
 
-    //magisk related files
-    const val MAGISK_MOUNTS_PATH = "/proc/self/mounts"
-    const val MAGISK_MOUNT_INFO_PATH = "/proc/self/mountinfo"
-    const val MAGISK_MOUNT_STATS_PATH = "/proc/self/mountstats"
 }
