@@ -65,7 +65,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./trustdevice/build/outputs/aar/trustdevice-release.aar
-          asset_name: trustdevice-release.aar
+          asset_name: trustdevice-release-${{ steps.get_version.outputs.VERSION }}.aar
           # Common MIME types:https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
           asset_content_type: application/zip
 
