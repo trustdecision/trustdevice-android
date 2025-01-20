@@ -120,7 +120,8 @@ TDRisk.initWithOptions(context, builder);
     "magisk": "true",
     "hook": "false",
     "emulator": "false",
-    "vpn": "false"
+    "vpn": "false",
+    "device_info_tampered": "false"
   },
   "device_detail": {
     "abiType": "arm64-v8a,armeabi-v7a,armeabi",
