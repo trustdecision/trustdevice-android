@@ -237,7 +237,7 @@ Fully independent intellectual property rights, with a number of patented techno
 TrustDevice is committed to the highest standards in security and compliance to keep your data safe.
 GDPR/CCA/PCI DSS/ISO 27701/ISO 9001 Compliant.
 
-### 6. Easy to Deplo
+### 6. Easy to Deploy
 
 SaaS(Software as a Service)deployment supported, reducing massively your integration cost and enabling rapid access to device fingerprint service.
 
