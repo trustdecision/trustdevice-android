@@ -11,14 +11,17 @@ interface XposedInterface {
 
 class XposedCollector : XposedInterface {
     override fun findXposed(): Boolean {
-        try {
-            Class.forName(
-                "de.robv.android.xposed.XposedBridge",
-                true,
-                ClassLoader.getSystemClassLoader()
-            )
-            return true
-        } catch (ignore: Exception) {
+        val xposedClasses = arrayOf(
+            "de.robv.android.xposed.XposedBridge",
+            "de.robv.android.xposed.IXposedHookLoadPackage",
+            "de.robv.android.xposed.DexposedBridge"
+        )
+        for (className in xposedClasses) {
+            try {
+                Class.forName(className, true, ClassLoader.getSystemClassLoader())
+                return true
+            } catch (ignore: Exception) {
+            }
         }
         return false
     }
