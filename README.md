@@ -65,7 +65,7 @@ Add these lines to `build.gradle` of a module.
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.trustdecision:trustdevice-android:1.0.9'
+    implementation 'com.github.trustdecision:trustdevice-android:1.1.0'
 }
 ```
 
