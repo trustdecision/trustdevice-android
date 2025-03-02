@@ -47,7 +47,6 @@ Add these lines to your `build.gradle`.
 allprojects {
     repositories {
         mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -57,7 +56,6 @@ If your version of Gradle is 7 or newer, add these lines to your `settings.gradl
 repositories {
         ...
         mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 ```
 
@@ -67,7 +65,7 @@ Add these lines to `build.gradle` of a module.
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.trustdecision:mobrisk:1.1.0'
+    implementation 'com.trustdecision.android:mobrisk:1.1.0'
 }
 ```
 
