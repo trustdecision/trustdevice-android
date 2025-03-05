@@ -8,8 +8,8 @@ import android.widget.Toast
 import cn.tongdun.android.base.BaseActivity
 import cn.tongdun.mobrisk.TDRisk.init
 import com.tencent.mmkv.MMKV
-import com.trustdevice.android.R
-import com.trustdevice.android.databinding.ActivitySplashBinding
+import com.trustdevice.android.demo.R
+import com.trustdevice.android.demo.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity() : BaseActivity<ActivitySplashBinding>() {

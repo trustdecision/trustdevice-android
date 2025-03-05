@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import cn.tongdun.android.beans.AppItemData
-import com.trustdevice.android.R
+import com.trustdevice.android.demo.R
 
 /**
  * @description:

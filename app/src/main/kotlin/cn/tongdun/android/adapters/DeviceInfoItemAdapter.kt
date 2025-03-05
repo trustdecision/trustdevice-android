@@ -4,7 +4,7 @@ import android.text.TextUtils
 import android.util.Pair
 import android.view.View
 import android.widget.TextView
-import com.trustdevice.android.R
+import com.trustdevice.android.demo.R
 
 
 class DeviceInfoItemAdapter(data: List<Pair<String, String>>) : BaseRecyclerViewAdapter<Pair<String, String>>(data) {

@@ -14,8 +14,8 @@ import cn.tongdun.android.adapters.DeviceInfoItemAdapter
 import cn.tongdun.android.base.BaseFragment
 import cn.tongdun.mobrisk.TDRisk
 import cn.tongdun.mobrisk.providers.DeviceInfoProvider
-import com.trustdevice.android.R
-import com.trustdevice.android.databinding.FragmentDeviceInfoBinding
+import com.trustdevice.android.demo.R
+import com.trustdevice.android.demo.databinding.FragmentDeviceInfoBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.*

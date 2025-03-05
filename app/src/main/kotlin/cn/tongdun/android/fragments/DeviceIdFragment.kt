@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import cn.tongdun.android.base.BaseFragment
 import cn.tongdun.mobrisk.TDRisk.getBlackbox
 import cn.tongdun.mobrisk.providers.DeviceInfoProvider
-import com.trustdevice.android.databinding.FragmentDeviceIdBinding
+import com.trustdevice.android.demo.databinding.FragmentDeviceIdBinding
 import org.json.JSONException
 
 

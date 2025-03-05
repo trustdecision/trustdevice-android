@@ -11,8 +11,8 @@ import cn.tongdun.android.base.BaseActivity
 import cn.tongdun.android.beans.AppItemData
 import cn.tongdun.mobrisk.TDRisk.getBlackbox
 import cn.tongdun.mobrisk.providers.DeviceInfoProvider
-import com.trustdevice.android.R
-import com.trustdevice.android.databinding.ActivityAppListBinding
+import com.trustdevice.android.demo.R
+import com.trustdevice.android.demo.databinding.ActivityAppListBinding
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

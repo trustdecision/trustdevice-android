@@ -7,8 +7,8 @@ import cn.tongdun.android.adapters.ViewPagerAdapter
 import cn.tongdun.android.base.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.trustdevice.android.R
-import com.trustdevice.android.databinding.ActivityMainBinding
+import com.trustdevice.android.demo.R
+import com.trustdevice.android.demo.databinding.ActivityMainBinding
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {

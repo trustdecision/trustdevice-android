@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    namespace 'com.trustdevice.android'
+    namespace 'com.trustdevice.android.demo'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.trustdevice.android"
+        applicationId "com.trustdevice.android.demo"
         minSdk 21
         targetSdk 34
-        versionCode 11
+        versionCode 12
         versionName "1.1.0"
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
