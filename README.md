@@ -17,7 +17,7 @@
   </a>
 </p>
 <p align="center">
-	<a href='https://play.google.com/store/apps/details?id=com.trustdevice.android&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+	<a href='https://play.google.com/store/apps/details?id=com.trustdevice.android.demo&pcampaignid=web_share'>
 		<img alt='Get it on Google Play' src='https://play.google.com/intl/zh-TW/badges/static/images/badges/en_badge_web_generic.png' width="240px"  />
 	</a>
 </p>
