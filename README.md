@@ -65,7 +65,7 @@ Add these lines to `build.gradle` of a module.
 ```groovy
 dependencies {
     ...
-    implementation 'com.trustdecision.android:mobrisk:1.1.1'
+    implementation 'com.trustdecision.android:mobrisk:1.1.2'
 }
 ```
 
