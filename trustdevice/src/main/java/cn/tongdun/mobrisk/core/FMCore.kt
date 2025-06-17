@@ -19,7 +19,7 @@ class FMCore private constructor() {
 
     companion object {
         init {
-            executeSafe { System.loadLibrary("trustdevice") }
+            executeSafe { System.loadLibrary("tddevicefingerprint") }
         }
 
         val instance: FMCore by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {

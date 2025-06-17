@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22.1)
 project("trustdevice")
 
 add_library(
-        trustdevice
+        tddevicefingerprint
 
         SHARED
 
@@ -32,5 +32,5 @@ else()
 endif()
 
 target_link_libraries(
-        trustdevice
+        tddevicefingerprint
         ${log-lib})
