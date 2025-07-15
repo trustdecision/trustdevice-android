@@ -293,7 +293,7 @@ Try the library features in the [TrustDevice Android Demo App](https://github.co
         <td>Android system upgrade</td><td>Device fingerprint/ID are consistent before and after system upgrade</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
     </tr>
     <tr align="center">
-        <td>Factory reset (including Android 10 and above, etc.)</td><td>The device fingerprints are the same before and after the device is restored to factory settings</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td>
+        <td>Factory reset</td><td>The device fingerprints are the same before and after the device is restored to factory settings</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td>
     </tr>
     <tr align="center">
         <td rowspan="18">Device Fingerprint Risk Identification</td><td>Secondary packaging</td><td>Ability to identify secondary packaged unofficial apps</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td>
