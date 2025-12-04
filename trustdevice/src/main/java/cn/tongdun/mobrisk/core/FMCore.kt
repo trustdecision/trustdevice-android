@@ -191,7 +191,7 @@ class FMCore private constructor() {
     }
 
     private fun collectorPackageListInfo() {
-        val appListCollector = AppListCollector(mContext.packageManager)
+        val appListCollector = AppListCollector(mContext)
         mDeviceInfo.appList = appListCollector.getAppList()
         mDeviceInfo.systemAppList = appListCollector.getSystemAppList()
     }

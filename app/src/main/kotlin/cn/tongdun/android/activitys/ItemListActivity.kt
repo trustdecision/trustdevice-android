@@ -81,13 +81,14 @@ class ItemListActivity : BaseActivity<ActivityAppListBinding>() {
             if (info == null) {
                 continue
             }
-            if (!showSystemApp && isSystemApp(info.applicationInfo)) {
+            val applicationInfo = info.applicationInfo ?: continue
+            if (!showSystemApp && isSystemApp(applicationInfo)) {
                 continue
             }
             val packageName = info.packageName
             val versionName = info.versionName
-            val icon = info.applicationInfo.loadIcon(packageManager)
-            val appName = packageManager.getApplicationLabel(info.applicationInfo).toString()
+            val icon = info.applicationInfo?.loadIcon(packageManager)
+            val appName = packageManager.getApplicationLabel(applicationInfo).toString()
             mItemData.add(AppItemData(icon, appName, packageName, versionName))
         }
     }
