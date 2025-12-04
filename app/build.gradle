@@ -6,14 +6,14 @@ plugins {
 
 android {
     namespace 'com.trustdevice.android.demo'
-    compileSdk 34
+     compileSdk 36
 
     defaultConfig {
         applicationId "com.trustdevice.android.demo"
         minSdk 21
-        targetSdk 34
-        versionCode 12
-        versionName "1.1.3"
+        targetSdk 36
+        versionCode 114
+        versionName "1.1.4"
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
@@ -47,6 +47,13 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+    }
+
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
     }
 }
 

@@ -22,12 +22,12 @@ afterEvaluate {
 
 android {
     namespace 'cn.tongdun.mobrisk'
-    compileSdk 34
+    compileSdk 36
 
     ndkVersion "25.2.9519653"
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 36
 
         externalNativeBuild{
             cmake {
