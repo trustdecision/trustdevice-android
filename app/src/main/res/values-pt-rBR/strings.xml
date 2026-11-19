@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_id_title">ID do seu dispositivo</string>
+    <string name="android_id_title">Android ID</string>
+    <string name="risk_labels_title">Rótulos de risco</string>
+    <string name="gsf_id_title">GSF ID</string>
+    <string name="gad_id_title">GAD ID</string>
+    <string name="media_drm_id_title">Media DRM ID</string>
+    <string name="vb_meta_id_title">vbmetaDigest</string>
+    <string name="setting_title">Configurações</string>
+    <string name="internal_storage_title">Armazenamento interno</string>
+    <string name="ram_title">Memória de acesso aleatório</string>
+    <string name="battery_title">Bateria</string>
+    <string name="all_apps">Aplicativos</string>
+    <string name="all_sensors">Sensores</string>
+    <string name="app_list">Lista de aplicativos</string>
+    <string name="show_system_apps">mostrar aplicativos do sistema</string>
+    <string name="hide_system_apps">ocultar aplicativos do sistema</string>
+    <string name="sensor_list">Lista de sensores</string>
+    <string name="tab_title_device_id">ID do dispositivo</string>
+    <string name="tab_title_device_info">Informações do dispositivo</string>
+    <string name="memory_desc">O estado no momento da coleta</string>
+    <string name="free_text">Livre</string>
+    <string name="total_capacity_text">capacidade total</string>
+    <string name="health_text">saúde</string>
+    <string name="temperature_text">temperatura</string>
+</resources>
